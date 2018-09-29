@@ -1,0 +1,37 @@
+body {
+  font-family: sans-serif;
+  background: linear-gradient(90deg, #00c4cc, #7d2ae8);
+  color: #3f4652;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  zoom: 2;
+  margin: 0;
+}
+
+.app {
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 6px;
+}
+
+h1 {
+  margin: 10px 0;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.timer {
+  font-size: 72px;
+  margin: 10px 0;
+}
+

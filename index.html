@@ -1,0 +1,433 @@
+<html>
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Intro to the Browser & the DOM</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/night.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
+      <img class="plain" width="100" style="background: none;"
+           src="images/canva-logo.png"/>
+      <h2>Intro to the Browser & the DOM</h2>
+      <p style="font-size: 0.6em">Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i
+          class="fab fa-twitter"></i> @nickw444</p>
+    </section>
+    <section>
+      <h2>About Me</h2>
+      <ul>
+        <li>Frontend Engineer @ Canva</li>
+        <li>Graduated UNSW in 2016 (Computer Science)</li>
+        <li>COMP2041 student in 2014</li>
+        <li>COMP2041 tutor in 2015</li>
+      </ul>
+    </section>
+    <section>
+      <section>
+        <h2>5 minute HTML Refresher</h2>
+      </section>
+      <section>
+        <h3>Simple HTML5 Document</h3>
+        <pre><code class="html" data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Title Goes Here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  Hello World
+&lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+      </section>
+      <section>
+        <h3>Adding CSS</h3>
+        <div>Inline Styles</div>
+        <pre><code class="html" data-trim>
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Title Goes Here&lt;/title&gt;
+  &lt;style&gt;
+  /* your CSS here */
+  &lt;/style&gt;
+&lt;/head&gt;
+					</code></pre>
+        <div>CSS File</div>
+        <pre><code class="html" data-trim>
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Title Goes Here&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;src/index.css&quot;&gt;
+&lt;/head&gt;
+					</code></pre>
+      </section>
+      <section>
+        <h3>Adding Scripts</h3>
+        Inline Scripts
+        <pre><code class="html" data-trim>
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Title Goes Here&lt;/title&gt;
+  &lt;script&gt;
+  /* your code here */
+  &lt;/script&gt;
+&lt;/head&gt;
+					</code></pre>
+        Script Files
+        <pre><code class="html" data-trim>
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Title Goes Here&lt;/title&gt;
+  &lt;script src=&quot;src/index.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+					</code></pre>
+      </section>
+      <section>
+        <h3>Basic HTML Elements</h3>
+        <ul>
+          <li><code>div</code>: A container element that can contain zero or more child elements. A block level element.
+          </li>
+          <li><code>p</code>: A paragraph element</li>
+          <li><code>span</code>: generic inline container for phrasing content. Similar to div, except span is an inline
+            element
+          </li>
+          <li><code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code>, <code>h6</code>: A
+            heading element
+          </li>
+          <li>...and many more!</li>
+        </ul>
+        <!--https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics -->
+      </section>
+      <section>
+        <h2>Let's start building our app!</h2>
+
+      </section>
+      <section>
+        <pre><code data-sample="app/00-html-wireframe/index.html" class="html" style="font-size:18px;"></code></pre>
+      </section>
+      <section data-background-iframe="app/00-html-wireframe/index.html">
+      </section>
+    </section>
+    <section>
+      <section>
+        <div style="float:right;">
+          <img class="plain" src="images/devtools.png">
+        </div>
+        <h2>Devtools</h2>
+        (Google Chrome)
+      </section>
+      <section>
+        <h3>Elements Panel</h3>
+        <img src="images/devtools-elements.png">
+      </section>
+      <section>
+        <h3>Console</h3>
+        <img src="images/devtools-console.png">
+      </section>
+      <section>
+        <h3>Network Inspector</h3>
+        <img src="images/devtools-network.png">
+      </section>
+      <section>
+        <h3>Sources Panel</h3>
+        <img src="images/devtools-sources.png">
+      </section>
+    </section>
+    <section>
+      <section>
+        <div style="font-size: 2em; margin-bottom: 0.5em">
+          <i class="fab fa-chrome"></i>&nbsp;
+          <i class="fab fa-firefox"></i>&nbsp;
+          <i class="fab fa-safari"></i>&nbsp;
+          <i class="fab fa-opera"></i>&nbsp;
+          <i class="fab fa-internet-explorer"></i>
+        </div>
+        <h2>Programming For the Browser</h2>
+      </section>
+      <section>
+        <h3>What is the DOM?</h3>
+      </section>
+      <section>
+        <h3><code>document.?</code></h3>
+        <p>The <code>Document</code> represents the web page loaded in the window and serves as an entrypoint into the
+          DOM tree.</p>
+        <ul>
+          <li><code>document.head</code>: Returns the <code>&lt;head&gt;</code> element of the current document.</li>
+          <li><code>document.body</code>: Returns the <code>&lt;body&gt;</code> element of the current document.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Query the Document</h3>
+        <pre><code class="js" data-trim>
+          const button = document.getElementById('my-button')
+        </code></pre>
+        <p>Or using the querySelector API:</p>
+        <pre><code class="js" data-trim>
+          const button = document.querySelector('#my-button')
+        </code></pre>
+        Both of these find the element inside the DOM tree with <code>id="my-button"</code> and returns it.
+      </section>
+      <section>
+        <h3><code>window.?</code></h3>
+      </section>
+      <section>
+        <h3><code>window.alert</code></h3>
+        <pre><code class="js" data-trim>
+window.alert('Hello World!')
+					</code></pre>
+        <button onClick="window.alert('Hello World!')">Run Code</button>
+      </section>
+      <section>
+        <h3><code>console.log()</code></h3>
+        <pre><code class="js" data-trim>
+console.log('Hello World!')
+					</code></pre>
+        <button onClick="console.log('Hello World!')">Run Code</button>
+        <div style="font-size: 0.5em; margin-top: 2em; opacity: 0.7;">
+          <small>n.b. You'll need to open your console to see the output of this demo!</small>
+        </div>
+      </section>
+      <section>
+        <h3><code>console.?</code></h3>
+        <p>The console can do a lot more than just plain old strings:</p>
+        <pre><code class="js" data-trim>
+          console.clear()
+          console.log()
+          console.error()
+          console.warn()
+          console.table()
+          console.group()
+					</code></pre>
+      </section>
+      <section>
+        <h3>Console introspection</h3>
+        <p>You can also log JS objects to the console and introspect them:</p>
+        <img src="images/devtools-console-introspection.png">
+      </section>
+    </section>
+    <section>
+      <section>
+        <img class="plain" src="images/v8-logo.png" style="background: none; width: 4em; margin-top: -1em;">
+        <h2>Behind the Scenes</h2>
+        <div>(How JS gets executed in your browser)</div>
+        <!--
+        https://medium.com/reloading/javascript-start-up-performance-69200f43b201
+        https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/
+
+        -->
+      </section>
+      <section>
+        <h2>Scope / IFFE</h2>
+      </section>
+      <section>
+        <h2>Execution Order</h2>
+      </section>
+      <section>
+        <h2>When is my JS Executed?</h2>
+      </section>
+      <section>
+        <h3>Run to Completion</h3>
+        <p>Each message is processed completely before any other message is processed.</p>
+        <p>Your functions cannot be pre-empted by another</p>
+        <p>Your function will run entirely before any other code runs</p>
+        <!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion-->
+      </section>
+    </section>
+    <section>
+      <section><h2>Events & interations</h2></section>
+      <section>
+        <h3><code>onClick</code> event (html)</h3>
+        <pre><code class="html" data-trim>
+          &lt;button onClick=&quot;window.alert('Hello COMP2041!')&quot;&gt;
+            Say Hello
+          &lt;/button&gt;
+					</code></pre>
+        <button onClick="window.alert('Hello COMP2041!')">Say Hello</button>
+      </section>
+      <section>
+        <h3>Binding an event</h3>
+        <div style="margin: 1em 0;">
+          <code style="font-size: 0.7em"><i>target</i>.addEventListener(<i>type</i>, <i>listener</i>[, options]);</code>
+        </div>
+        <ul>
+          <li><code>type</code>: <code>'click'</code>, <code>'focus'</code>, <code>'blur'</code>, <code>'keydown'</code>,
+            etc
+          </li>
+          <li><code>listener</code>: The function to execute when the event occurs.</li>
+        </ul>
+        <!--https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener-->
+      </section>
+
+      <section>
+        <h3><code>onClick</code> event (html/js)</h3>
+        <pre><code class="html" data-trim>
+          &lt;button id=&quot;hello-button&quot;&gt;Say Hello&lt;/button&gt;
+					</code></pre>
+        <pre><code class="js" data-trim>
+          const helloButton = document.getElementById('hello-button');
+          helloButton.addEventListener('click', () => {
+            window.alert('Hello COMP2041 from JS!');
+          });
+					</code></pre>
+        <button id="hello-button">Say Hello</button>
+        <script>
+          const helloButton = document.getElementById('hello-button');
+          helloButton.addEventListener('click', () => {
+            window.alert('Hello COMP2041 from JS!');
+          });
+        </script>
+      </section>
+      <section>event bubbling / nested handlers</section>
+    </section>
+    <section>
+      <section>
+        <h2>Timers&nbsp;<i class="fas fa-stopwatch"></i></h2>
+      </section>
+      <section>
+        <h3><code>setTimeout</code> / <code>clearTimeout</code></h3>
+        <pre><code class="js" data-trim>
+          document.setTimeout(() => {
+            window.alert('Done!')
+          }, 1000);
+        </code></pre>
+        <button id="setTimeoutRunCode">Run Code</button>
+        <script>
+          document.getElementById('setTimeoutRunCode').addEventListener('click', () => {
+            window.setTimeout(() => {
+              window.alert('Done!')
+            }, 1000);
+          })
+        </script>
+      </section>
+      <section>
+        <h3><code>setInterval</code> / <code>clearInterval</code></h3>
+        <pre><code class="js" data-trim>
+          let timer = undefined;
+          let counter = document.getElementById('counter');
+
+          function tick() {
+            counter.innerText = parseInt(counter.innerText) + 1;
+          }
+
+          function onStartClick() {
+            timer = window.setInterval(tick, 1000);
+          }
+          function onStopClick() {
+            window.clearInterval(timer);
+          }
+        </code></pre>
+        <div>Counter: <span id="setIntervalCounter">0</span></div>
+        <button id="setIntervalStart">Start</button>&nbsp;<button id="setIntervalStop">Stop</button>
+        <script>
+          let timer = undefined;
+          let startButton = document.getElementById('setIntervalStart');
+          let stopButton = document.getElementById('setIntervalStop');
+          let counter = document.getElementById('setIntervalCounter');
+
+          function tick() {
+            counter.innerText = parseInt(counter.innerText) + 1;
+          }
+
+          startButton.addEventListener('click', () => {
+            timer = window.setInterval(tick, 1000);
+          });
+          stopButton.addEventListener('click', () => {
+            window.clearInterval(timer);
+          });
+        </script>
+      </section>
+      <section>
+        <h3>Precision</h3>
+        <p>Recursive setTimeout vs setInterval</p>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h2>Manipulating the DOM</h2>
+      </section>
+      <section>
+        <h3>document.querySelector / others</h3>
+      </section>
+      <section>
+        <h3>Adding a CSS class</h3>
+      </section>
+      <section>
+        <h3>Modifying Inline Styles</h3>
+      </section>
+      <section>
+        <h3>Modifying innertext</h3>
+      </section>
+    </section>
+    <section>
+      <section><h2>Context</h2></section>
+      <section><h3><code>this</code></h3></section>
+      <section><h3>Arrow <code>&rArr;</code> functions</h3></section>
+    </section>
+    <section>
+      <h2>Web Frameworks</h2>
+      <section><h3>jQuery</h3></section>
+      <section><h3>Backbone</h3></section>
+      <section><h3>Angular.js</h3></section>
+      <section><h3>React</h3></section>
+      <section><h3>Vue</h3></section>
+      <section><h3>Angular</h3></section>
+    </section>
+    <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
+      <img class="plain" width="100" style="background: none; "
+           src="images/canva-logo.png"/>
+      <h2>Thanks</h2>
+      <div style="font-size:0.4em;">
+        <p>Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i class="fab fa-twitter"></i> @nickw444</p>
+        <p style="opacity: 0.8">p.s. we are looking for summer interns and 2019 graduates! <br/>Please email nick@canva.com if you are interested</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    history: true,
+    center: true,
+
+    dependencies: [
+      {src: 'plugin/sampler/sampler.js'},
+      {src: 'plugin/markdown/marked.js'},
+      {src: 'plugin/markdown/markdown.js'},
+      {src: 'plugin/notes/notes.js', async: true},
+      {
+        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      }
+    ]
+  });
+</script>
+</body>
+</html>
