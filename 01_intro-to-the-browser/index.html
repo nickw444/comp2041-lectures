@@ -7,7 +7,7 @@
   <title>Intro to the Browser & the DOM</title>
 
   <link rel="stylesheet" href="css/reveal.css">
-  <link rel="stylesheet" href="css/theme/night.css">
+  <link rel="stylesheet" href="css/theme/canva.css">
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -27,11 +27,13 @@
 <div class="reveal">
   <div class="slides">
     <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
-      <img class="plain" width="100" style="background: none;"
-           src="images/canva-logo.png"/>
-      <h2>Intro to the Browser & the DOM</h2>
-      <p style="font-size: 0.6em">Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i
-          class="fab fa-twitter"></i> @nickw444</p>
+      <div class="has-dark-background">
+        <img class="plain" width="100" style="background: none;"
+             src="images/canva-logo.png"/>
+        <h2>Intro to the Browser & the DOM</h2>
+        <p style="font-size: 0.6em">Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i
+            class="fab fa-twitter"></i> @nickw444</p>
+      </div>
     </section>
     <section>
       <h2>About Me</h2>
@@ -120,13 +122,12 @@
         <!--https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics -->
       </section>
       <section>
-        <h2>Let's start building our app!</h2>
-
-      </section>
-      <section>
-        <pre><code data-sample="app/00-html-wireframe/index.html" class="html" style="font-size:18px;"></code></pre>
-      </section>
-      <section data-background-iframe="app/00-html-wireframe/index.html">
+        <h3>Let's start building our app!</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Introduce basic HTML and CSS (Here's one I prepared earlier)
+          </textarea>
+        </aside>
       </section>
     </section>
     <section>
@@ -165,31 +166,57 @@
         </div>
         <h2>Programming For the Browser</h2>
       </section>
-      <section>
-        <h3>What is the DOM?</h3>
+      <section data-markdown>
+        <textarea data-template>
+          ### What is the DOM
+          - An API for HTML (or XML) documents.
+          - Represents the page so that Javascript can change the structure, style and content of it.
+          - The DOM represents the document as nodes and objects in a tree.
+
+          ![](images/dom-structure.gif)
+        </textarea>
+        <!--https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction -->
       </section>
-      <section>
-        <h3><code>document.?</code></h3>
-        <p>The <code>Document</code> represents the web page loaded in the window and serves as an entrypoint into the
-          DOM tree.</p>
-        <ul>
-          <li><code>document.head</code>: Returns the <code>&lt;head&gt;</code> element of the current document.</li>
-          <li><code>document.body</code>: Returns the <code>&lt;body&gt;</code> element of the current document.</li>
-        </ul>
+      <section data-markdown>
+        <textarea data-template>
+          ### `document.?`
+          - document represents the web page loaded in the window and serves as an entrypoint into the
+          DOM tree.
+
+          - `document.head`: Returns the `&lt;head&gt;` element of the current document.
+          - `document.body`: Returns the `&lt;body&gt;` element of the current document.
+        </textarea>
       </section>
-      <section>
-        <h3>Query the Document</h3>
-        <pre><code class="js" data-trim>
+      <section data-markdown>
+        <textarea data-template>
+          ### Query the DOM
+
+          ```html
+          &lt;button id=&quot;my-button&quot;&gt;Hello&lt;/button&gt;
+          ```
+
+          ##### Using `getElementById`
+          ```js
           const button = document.getElementById('my-button')
-        </code></pre>
-        <p>Or using the querySelector API:</p>
-        <pre><code class="js" data-trim>
+          ```
+
+          ##### Using `querySelector`:
+
+          ```js
           const button = document.querySelector('#my-button')
-        </code></pre>
-        Both of these find the element inside the DOM tree with <code>id="my-button"</code> and returns it.
+          ```
+          Both of these find the element inside the DOM tree with `id="my-button"` and returns it.
+        </textarea>
       </section>
-      <section>
-        <h3><code>window.?</code></h3>
+      <section data-markdown>
+        <textarea data-template>
+          ### `window.?`
+
+          - similar to `document`, represents the window containing the DOM document
+          - The `Window` interface is home to a variety of functions, namespaces, objects, and constructors
+
+        </textarea>
+        <!--https://developer.mozilla.org/en-US/docs/Web/API/Window-->
       </section>
       <section>
         <h3><code>window.alert</code></h3>
@@ -199,13 +226,21 @@ window.alert('Hello World!')
         <button onClick="window.alert('Hello World!')">Run Code</button>
       </section>
       <section>
+        <h3><code>window.location</code></h3>
+        <pre><code class="js" data-trim id="windowLocationDemo"></code></pre>
+        <script>
+          document.getElementById('windowLocationDemo').innerHTML = JSON.stringify(window.location, null, 2);
+        </script>
+        <button onClick="window.alert('Hello World!')">Run Code</button>
+      </section>
+      <section>
         <h3><code>console.log()</code></h3>
         <pre><code class="js" data-trim>
 console.log('Hello World!')
 					</code></pre>
         <button onClick="console.log('Hello World!')">Run Code</button>
         <div style="font-size: 0.5em; margin-top: 2em; opacity: 0.7;">
-          <small>n.b. You'll need to open your console to see the output of this demo!</small>
+          n.b. You'll need to open your console to see the output of this demo!
         </div>
       </section>
       <section>
@@ -225,33 +260,14 @@ console.log('Hello World!')
         <p>You can also log JS objects to the console and introspect them:</p>
         <img src="images/devtools-console-introspection.png">
       </section>
-    </section>
-    <section>
       <section>
-        <img class="plain" src="images/v8-logo.png" style="background: none; width: 4em; margin-top: -1em;">
-        <h2>Behind the Scenes</h2>
-        <div>(How JS gets executed in your browser)</div>
-        <!--
-        https://medium.com/reloading/javascript-start-up-performance-69200f43b201
-        https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/
-
-        -->
-      </section>
-      <section>
-        <h2>Scope / IFFE</h2>
-      </section>
-      <section>
-        <h2>Execution Order</h2>
-      </section>
-      <section>
-        <h2>When is my JS Executed?</h2>
-      </section>
-      <section>
-        <h3>Run to Completion</h3>
-        <p>Each message is processed completely before any other message is processed.</p>
-        <p>Your functions cannot be pre-empted by another</p>
-        <p>Your function will run entirely before any other code runs</p>
-        <!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion-->
+        <h3>With this knowledge, lets add some JS to our HTML</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Add javascript file (index.js). Make it have a window.alert() on load.
+            - Query the DOM to find the elements we care about
+          </textarea>
+        </aside>
       </section>
     </section>
     <section>
@@ -278,7 +294,6 @@ console.log('Hello World!')
         </ul>
         <!--https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener-->
       </section>
-
       <section>
         <h3><code>onClick</code> event (html/js)</h3>
         <pre><code class="html" data-trim>
@@ -298,7 +313,37 @@ console.log('Hello World!')
           });
         </script>
       </section>
+      <section>
+        <h3><code>mouseMove</code> event</h3>
+        <pre><code class="js" data-trim>
+          window.addEventListener('mousemove', ({x, y}) => {
+            console.log({x, y});
+          });
+        </code></pre>
+        <pre id="mouseMoveDemoConsole"></pre>
+        <script>
+          (function () {
+            const consoleEl = document.getElementById('mouseMoveDemoConsole');
+
+            function logToConsole(msg) {
+              consoleEl.innerHTML = msg;
+            }
+
+            window.addEventListener('mousemove', ({x, y}) => {
+              logToConsole(JSON.stringify({x, y}, null, 2));
+            });
+          })();
+        </script>
+      </section>
       <section>event bubbling / nested handlers</section>
+      <section>
+        <h3>Let's make our app interactive</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Bind an event on the start button
+          </textarea>
+        </aside>
+      </section>
     </section>
     <section>
       <section>
@@ -313,6 +358,7 @@ console.log('Hello World!')
         </code></pre>
         <button id="setTimeoutRunCode">Run Code</button>
         <script>
+          console.log('meme');
           document.getElementById('setTimeoutRunCode').addEventListener('click', () => {
             window.setTimeout(() => {
               window.alert('Done!')
@@ -340,6 +386,7 @@ console.log('Hello World!')
         <div>Counter: <span id="setIntervalCounter">0</span></div>
         <button id="setIntervalStart">Start</button>&nbsp;<button id="setIntervalStop">Stop</button>
         <script>
+          console.log('memes')
           let timer = undefined;
           let startButton = document.getElementById('setIntervalStart');
           let stopButton = document.getElementById('setIntervalStop');
@@ -358,8 +405,99 @@ console.log('Hello World!')
         </script>
       </section>
       <section>
-        <h3>Precision</h3>
-        <p>Recursive setTimeout vs setInterval</p>
+        <h3>Time to make our stopwatch tick!</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Tick the timer every second, and update the UI
+            - Add milliseconds to the timer.
+          </textarea>
+        </aside>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Accuracy of Timers
+          - Timers in JS are not very accurate
+          - If we made a timer with just setTimeout/setInterval we would find the timer would drift.
+          - Solution: TODO
+        </textarea>
+      </section>
+      <section>
+        <h3>Lets fix the clock drift in our application</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Remove clock drift by keeping track of start time
+          </textarea>
+        </aside>
+      </section>
+    </section>
+    <section>
+      <section>
+        <img class="plain" src="images/v8-logo.png" style="background: none; width: 4em; margin-top: -1em;">
+        <h2>Behind the Scenes</h2>
+        <div>(How JS gets executed in your browser)</div>
+        <!--
+        https://medium.com/reloading/javascript-start-up-performance-69200f43b201
+        https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/
+        -->
+      </section>
+      <section>
+        <h2>Scope / IFFE</h2>
+      </section>
+      <section>
+        <h2>Execution Order</h2>
+      </section>
+      <section>
+        <h2>When is my JS Executed?</h2>
+      </section>
+      <section>
+        <h3>Run to Completion</h3>
+        <p>Each message is processed completely before any other message is processed.</p>
+        <p>Your functions cannot be pre-empted by another</p>
+        <p>Your function will run entirely before any other code runs</p>
+        <!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion-->
+      </section>
+      <section>
+        <h4>Example</h4>
+        <pre><code class="js" data-trim style="font-size:0.8em; line-height:1em">
+          const s = new Date().getSeconds();
+
+          setTimeout(function () {
+            // prints out "2", meaning that the callback is not called immediately after 500 milliseconds.
+            console.log("Ran after " + (new Date().getSeconds() - s) + " seconds");
+          }, 500);
+
+          while (true) {
+            if (new Date().getSeconds() - s >= 2) {
+              console.log("Good, looped for 2 seconds");
+              break;
+            }
+          }
+        </code></pre>
+        <button id="runToCompletionRunCode">Run Code</button>
+        <pre id="runToCompletionConsole"></pre>
+        <script>
+          function runToCompletionDemo() {
+            const s = new Date().getSeconds();
+
+            setTimeout(function () {
+              // prints out "2", meaning that the callback is not called immediately after 500 milliseconds.
+              runToCompletionDemoLog("Ran after " + (new Date().getSeconds() - s) + " seconds");
+            }, 500);
+
+            while (true) {
+              if (new Date().getSeconds() - s >= 2) {
+                runToCompletionDemoLog("Good, looped for 2 seconds");
+                break;
+              }
+            }
+          }
+
+          function runToCompletionDemoLog(msg) {
+            document.getElementById('runToCompletionConsole').innerText += msg + '\n';
+          }
+
+          document.getElementById('runToCompletionRunCode').addEventListener('click', runToCompletionDemo);
+        </script>
       </section>
     </section>
     <section>
@@ -380,12 +518,23 @@ console.log('Hello World!')
       </section>
     </section>
     <section>
+      <section><h2>Animations</h2></section>
+      <section>
+        <h3>Using <code>requestAnimationFrame</code> lets improve our solution for 60fps</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Use `requestAnimationFrame` to get 60FPS timer update
+          </textarea>
+        </aside>
+      </section>
+    </section>
+    <section>
       <section><h2>Context</h2></section>
       <section><h3><code>this</code></h3></section>
       <section><h3>Arrow <code>&rArr;</code> functions</h3></section>
     </section>
     <section>
-      <h2>Web Frameworks</h2>
+      <section><h2>Web Frameworks</h2></section>
       <section><h3>jQuery</h3></section>
       <section><h3>Backbone</h3></section>
       <section><h3>Angular.js</h3></section>
@@ -393,13 +542,23 @@ console.log('Hello World!')
       <section><h3>Vue</h3></section>
       <section><h3>Angular</h3></section>
     </section>
+    <section>
+      <h2>References</h2>
+      <ul>
+        <li></li>
+      </ul>
+    </section>
     <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
-      <img class="plain" width="100" style="background: none; "
-           src="images/canva-logo.png"/>
-      <h2>Thanks</h2>
-      <div style="font-size:0.4em;">
-        <p>Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i class="fab fa-twitter"></i> @nickw444</p>
-        <p style="opacity: 0.8">p.s. we are looking for summer interns and 2019 graduates! <br/>Please email nick@canva.com if you are interested</p>
+      <div class="has-dark-background">
+        <img class="plain" width="100" style="background: none; "
+             src="images/canva-logo.png"/>
+        <h2>Thanks</h2>
+        <div style="font-size:0.4em;">
+          <p>Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i class="fab fa-twitter"></i> @nickw444</p>
+          <p style="opacity: 0.8">p.s. we are looking for summer interns and 2019 graduates! <br/>Please email
+            nick@canva.com
+            if you are interested</p>
+        </div>
       </div>
     </section>
   </div>
@@ -417,10 +576,11 @@ console.log('Hello World!')
     center: true,
 
     dependencies: [
-      {src: 'plugin/sampler/sampler.js'},
       {src: 'plugin/markdown/marked.js'},
+      {src: 'plugin/external/external.js'},
       {src: 'plugin/markdown/markdown.js'},
       {src: 'plugin/notes/notes.js', async: true},
+      {src: 'plugin/sampler/sampler.js'},
       {
         src: 'plugin/highlight/highlight.js', async: true, callback: function () {
           hljs.initHighlightingOnLoad();

@@ -136,10 +136,13 @@ module.exports = function(grunt) {
 				files: [ 'css/reveal.scss' ],
 				tasks: 'css-core'
 			},
-			html: {
-				files: root.map(path => path + '/*.html')
-			},
-			markdown: {
+      html: {
+        files: [
+          root.map(path => path + '/*.html'),
+          root.map(path => path + '/slides/*.html'),
+        ]
+      },
+      markdown: {
 				files: root.map(path => path + '/*.md')
 			},
 			options: {
