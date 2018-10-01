@@ -19,7 +19,7 @@
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
     document.getElementsByTagName('head')[0].appendChild(link);
   </script>
 </head>
@@ -70,7 +70,7 @@
     </section>
     <section>
       <section>
-        <h2>5 minute HTML Refresher</h2>
+        <h2>5 Minute HTML Refresher</h2>
         <aside class="notes" data-markdown>
           <textarea data-template>
             I know you've done a fair bit of this in previous week lectures, but so it's fresh for today i'll just
@@ -494,7 +494,7 @@ console.log('Hello World!')
         </aside>
       </section>
       <section>
-        <h3>Console introspection</h3>
+        <h3>Console Introspection</h3>
         <p>You can also log JS objects to the console and introspect them:</p>
         <img src="images/devtools-console-introspection.png">
         <aside class="notes" data-markdown>
