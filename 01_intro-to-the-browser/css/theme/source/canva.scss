@@ -38,6 +38,18 @@ section.has-dark-background,
   }
 }
 
+.reveal .footnotes {
+  margin-top: 1em;
+  &.left {
+    text-align: left;
+  }
+}
+
+.reveal .footnote {
+  font-size: 0.4em;
+  display: block;
+}
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------

@@ -36,36 +36,36 @@
       </div>
     </section>
     <section>
-      <section>
-        <h2>About Me</h2>
-        <ul>
-          <li>Frontend Engineer / Technical Lead @ Canva</li>
-          <li>Graduated UNSW in 2016 (Computer Science)</li>
-          <li>COMP2041 student in 2014</li>
-          <li>COMP2041 tutor in 2015</li>
-        </ul>
-        <aside class="notes" data-markdown>
-          <textarea data-template>
-            I think it's worthwhile giving some context about why I'm here today giving this lecture;
+      <section data-markdown>
+        <textarea data-template>
+          ## About Me
 
-            - I'm actually a UNSW graduate who took COMP2041 in 2014 and tutored it in 2015.
-            - The course seems to have changed a lot since then and
-            - I am really liking the direction it's taking.
-            - After graduating UNSW I applied to Canva for a Frontend Engineering role.
-            - Canva is a web-based graphic design tool,
-            - so you could imagine there is a lot of frontend work to be done
-          </textarea>
-        </aside>
+          - Frontend Engineer / Technical Lead @ Canva
+          - Graduated UNSW in 2016 (Computer Science)
+          - COMP2041 student in 2014
+          - COMP2041 tutor in 2015
+
+          Note:
+          I think it's worthwhile giving some context about why I'm here today giving this lecture;
+
+          - I'm actually a UNSW graduate who took COMP2041 in 2014 and tutored it in 2015.
+          - The course seems to have changed a lot since then and
+          - I am really liking the direction it's taking.
+          - After graduating UNSW I applied to Canva for a Frontend Engineering role.
+          - Canva is a web-based graphic design tool,
+          - so you could imagine there is a lot of frontend work to be done
+        </textarea>
       </section>
-      <section>
-      <!--<section data-background-iframe="blobs/Collaborate%20%26%20Create%20Amazing%20Graphic%20Design%20for%20Free.html">-->
-        <aside class="notes" data-markdown>
-          <textarea data-template>
-            To give you some context of the sort of frontend work we do, here's something I've been working on over the last few months with my team.
+      <section data-markdown>
+        <!--<section data-markdown data-background-iframe="blobs/Collaborate%20%26%20Create%20Amazing%20Graphic%20Design%20for%20Free.html">-->
+        <textarea data-template>
+          Note:
+          To give you some context of the sort of frontend work we do, here's something I've been working on over
+          the last few months with my team.
 
-            We have undertaken a large project to re-build our login and signup landing pages and have incorporated a GPU accelerated WebGL animation to give it a "memorable" look and feel.
-          </textarea>
-        </aside>
+          We have undertaken a large project to re-build our login and signup landing pages and have incorporated
+          a GPU accelerated WebGL animation to give it a "memorable" look and feel.
+        </textarea>
       </section>
     </section>
     <section>
@@ -73,7 +73,8 @@
         <h2>5 minute HTML Refresher</h2>
         <aside class="notes" data-markdown>
           <textarea data-template>
-            I know you've done a fair bit of this in previous week lectures, but so it's fresh for today i'll just quickly run over the basics of HTML
+            I know you've done a fair bit of this in previous week lectures, but so it's fresh for today i'll just
+            quickly run over the basics of HTML
           </textarea>
         </aside>
       </section>
@@ -93,7 +94,8 @@
 					</code></pre>
         <aside class="notes" data-markdown>
           <textarea data-template>
-            Here is a minimal HTML5 document. It specifies a head, a body, and has the content 'Hello World'. Nice and simple!
+            Here is a minimal HTML5 document. It specifies a head, a body, and has the content 'Hello World'. Nice
+            and simple!
           </textarea>
         </aside>
       </section>
@@ -153,7 +155,8 @@
 
             Or, you can reference an external script to load and execute.
 
-            These two examples here are the most common you'll use, but there are other script options like async and defer that can alter the loading and execution behavior of the script.
+            These two examples here are the most common you'll use, but there are other script options like async
+            and defer that can alter the loading and execution behavior of the script.
           </textarea>
         </aside>
       </section>
@@ -169,29 +172,35 @@
           <li><code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code>, <code>h6</code>: A
             heading element
           </li>
-          <li>...and many more!</li>
+          <li>...and <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">many
+            more</a>!
+          </li>
         </ul>
         <aside class="notes" data-markdown>
           <textarea data-template>
             Here's some basic HTML elements you might encounter along the way.
 
-            - A `div` is a container element that can contain zero or more child elements. It is a block level element, meaning that if you have two adjacent divs in code, their content will be on separate lines.
+            - A `div` is a container element that can contain zero or more child elements. It is a block level element,
+              meaning that if you have two adjacent divs in code, their content will be on separate lines.
             - A `p` is a paragraph element.
-            - A span is similar to a div, except it is an inline element, so that adjacent spans will display on the same line. Spans are useful to changing style attributes of particular excerpts to text.
+            - A span is similar to a div, except it is an inline element, so that adjacent spans will display on the
+              same line. Spans are useful to changing style attributes of particular excerpts to text.
             - h1, h2 and so on are heading elements
 
-            These are just a subset of element, there are many many more that I suggest you familiarize yourself with as it really helps you create semantic documents that are easy to follow.
+            These are just a subset of element, there are many many more that I suggest you familiarize yourself with
+            as it really helps you create semantic documents that are easy to follow.
           </textarea>
         </aside>
-        <!--https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics -->
       </section>
       <section>
-        <h3>Let's start building our app!</h3>
+        <h3>Let's start building <a target="_blank" href="app/00-html-wireframe/index.html">our app</a>!</h3>
         <aside class="notes" data-markdown>
           <textarea data-template>
-            So now with all that under our belt, I am going to introduce you to the app we will be building today alongside this presentation.
+            So now with all that under our belt, I am going to introduce you to the app we will be building today
+            alongside this presentation.
 
-            I have prepared a HTML document with some CSS to accompany it and make it look reasonable. However, side note - I am not a designer.
+            I have prepared a HTML document with some CSS to accompany it and make it look reasonable. However,
+            side note - I am not a designer.
           </textarea>
         </aside>
       </section>
@@ -205,9 +214,11 @@
         (Google Chrome)
         <aside class="notes" data-markdown>
           <textarea data-template>
-            Before we jump further through the stopwatch app we'll be building, lets chat about some of the tools available to you to assist your development.
+            Before we jump further through the stopwatch app we'll be building, lets chat about some of the tools
+            available to you to assist your development.
 
-            I'll be specifically speaking about the tools available in Chrome, however the tools in other evergreen browsers are very similar.
+            I'll be specifically speaking about the tools available in Chrome, however the tools in other evergreen
+            browsers are very similar.
 
             Hopefully we won't have any bugs and need to use any of these today, but If we do I guess that's a bonus.
           </textarea>
@@ -215,19 +226,71 @@
       </section>
       <section>
         <h3>Elements Panel</h3>
-        <img src="images/devtools-elements.png">
+        <div><img height="50%" src="images/devtools-elements.png"></div>
+        <a class="footnote" target="_blank"
+           href="https://developers.google.com/web/tools/chrome-devtools/inspect-styles/">
+          https://developers.google.com/web/tools/chrome-devtools/inspect-styles/</a>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            The elements inspector allows you to inspect and manipulate the DOM using a straightforward interface.
+
+            It gives you the capability to edit classes, attributes, or entire blocks of HTML.
+
+            Additionally, it allows you to view and change CSS rules that are applied to any element.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Console</h3>
-        <img src="images/devtools-console.png">
+        <div><img height="50%" src="images/devtools-console.png"></div>
+        <a class="footnote" target="_blank" href="https://developers.google.com/web/tools/chrome-devtools/console/">
+          https://developers.google.com/web/tools/chrome-devtools/console/</a>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            The console is home to warnings and errors that may occur during the parsing and execution of your Javascript.
+
+            Additionally, any user invoked console output will also be displayed here.
+
+            However, the console isn't just a one-way output from your code to the developer. You can also type in
+            expressions and have them evaluated in real time.
+
+            When stepping through code or when a breakpoint is hit, you can also use the console to evaluate
+            expressions in the context of the current execution.
+          </textarea>
+        </aside>
+        <!--/-->
       </section>
       <section>
         <h3>Network Inspector</h3>
-        <img src="images/devtools-network.png">
+        <div><img height="70%" class="plain" src="images/devtools-network.png"></div>
+        <a class="footnote" target="_blank"
+           href="https://developers.google.com/web/tools/chrome-devtools/network-performance/">
+          https://developers.google.com/web/tools/chrome-devtools/network-performance/</a>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            The network inspector provides useful information about the resources your application loads over time.
+
+            It allows you to see what resources are taking a long time to load.
+
+            You can use the network inspector to simulate high network latency and low bandwidth to get an idea of
+            how your application may perform for users with slower connections.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Sources Panel</h3>
-        <img src="images/devtools-sources.png">
+        <div><img class="plain" height="60%" src="images/devtools-sources.png"></div>
+        <a class="footnote" target="_blank" href="https://developers.google.com/web/tools/chrome-devtools/sources">
+          https://developers.google.com/web/tools/chrome-devtools/sources</a>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            The sources panel allows you to inspect source files your application uses, add breakpoints to them and
+            debug them at runtime.
+
+            Additionally, you can edit files here and with the right workspace configuration you can have them persist
+            to your filesystem.
+          </textarea>
+        </aside>
       </section>
     </section>
     <section>
@@ -240,6 +303,17 @@
           <i class="fab fa-internet-explorer"></i>
         </div>
         <h2>Programming For the Browser</h2>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Javascript can be written for a number of different environments like the backend and embedded devices,
+            however what we're interested in right now is using Javascript on the web.
+
+            When we use Javascript on the web, the web browsers expose an API that we can use to make our applications
+            do useful things.
+
+            Let's take a closer look at what these are.
+          </textarea>
+        </aside>
       </section>
       <section data-markdown>
         <textarea data-template>
@@ -249,8 +323,26 @@
           - The DOM represents the document as nodes and objects in a tree.
 
           ![](images/dom-structure.gif)
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">
+              https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+            </a>
+          </div>
+
+          Note:
+          Let's start with the DOM.
+
+          Can I get a show of hands, who has heard of the DOM before?
+
+          So, for those of you who don't know, the DOM is an API for HTML documents that the browser exposes to you.
+
+          The DOM represents the page and allows our Javascript code to traverse it, change it's structure, and
+          modify the style and content of elements within it.
+
+          The DOM represents the document as nodes and objects in a tree-like structure.
         </textarea>
-        <!--https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction -->
       </section>
       <section data-markdown>
         <textarea data-template>
@@ -260,6 +352,13 @@
 
           - `document.head`: Returns the `&lt;head&gt;` element of the current document.
           - `document.body`: Returns the `&lt;body&gt;` element of the current document.
+
+          Note:
+          So you might be wondering, how do we access the DOM?
+
+          Your browser exposes a global variable `document`  that serves as an entrypoint into the DOM tree.
+
+          Try typing `document` into your web browser's console and see what it returns.
         </textarea>
       </section>
       <section data-markdown>
@@ -281,6 +380,19 @@
           const button = document.querySelector('#my-button')
           ```
           Both of these find the element inside the DOM tree with `id="my-button"` and returns it.
+
+          Note:
+          It's often useful to be able to locate an element in the DOM so that we can manipulate it in some way.
+
+          We can do this using the query API.
+
+          Say we have a button on our HTML document with the `id`, `my-button`. We can use `document.getElementById`
+          with the `id` of the element to obtain a reference to the node.
+
+          Additionally, we can also do something similar using `document.querySelector`, uses a CSS selector to
+          find the node within the document.
+
+          As you can imagine, both the examples here have the same result.
         </textarea>
       </section>
       <section data-markdown>
@@ -290,8 +402,22 @@
           - similar to `document`, represents the window containing the DOM document
           - The `Window` interface is home to a variety of functions, namespaces, objects, and constructors
 
+          <div class="footnotes">
+            <a class="footnote" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Window">
+            https://developer.mozilla.org/en-US/docs/Web/API/Window</a>
+          </div>
+
+          Note:
+
+          Another interesting variable you might come across when developing for the web browser is `window`.
+
+          It's similar to `document` in some ways, instead of representing the document, it represents the window
+          that contains the current document.
+
+          The window interface is home to a variety of functions, namespaces, objects and constructors.
+
+          Any global variable is a property on window, however we'll touch on this a bit later.
         </textarea>
-        <!--https://developer.mozilla.org/en-US/docs/Web/API/Window-->
       </section>
       <section>
         <h3><code>window.alert</code></h3>
@@ -299,6 +425,11 @@
 window.alert('Hello World!')
 					</code></pre>
         <button onClick="window.alert('Hello World!')">Run Code</button>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Here's a little demo using `window.alert` to show an alert to the user.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>window.location</code></h3>
@@ -306,6 +437,13 @@ window.alert('Hello World!')
         <script>
           document.getElementById('windowLocationDemo').innerHTML = JSON.stringify(window.location, null, 2);
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Additionally, we can read data off the `window` variable and print it out.
+
+            This example shows the current value of `window.location`.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>console.log()</code></h3>
@@ -316,6 +454,18 @@ console.log('Hello World!')
         <div style="font-size: 0.5em; margin-top: 2em; opacity: 0.7;">
           n.b. You'll need to open your console to see the output of this demo!
         </div>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            When we're writing code, it's often useful to write debug messages to the console to get a better
+            understanding of how your code is executing
+
+            however, if you do this a lot, consider learning how to use the debugger and breakpoints.
+
+            This example logs the string `Hello World!` to the console.
+
+            Let's open up the console on this page and take a look.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>console.?</code></h3>
@@ -328,24 +478,57 @@ console.log('Hello World!')
           console.table()
           console.group()
 					</code></pre>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            There's actually a lot of different ways we can interact with the console.
+
+            We have the ability to
+
+            - clear it,
+            - log a normal debug message to it,
+            - write an error,
+            - write a warning,
+            - show some data in a table format,
+            - and even show logged messages within a group
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Console introspection</h3>
         <p>You can also log JS objects to the console and introspect them:</p>
         <img src="images/devtools-console-introspection.png">
-      </section>
-      <section>
-        <h3>With this knowledge, lets add some JS to our HTML</h3>
         <aside class="notes" data-markdown>
           <textarea data-template>
-            - Add javascript file (index.js). Make it have a window.alert() on load.
-            - Query the DOM to find the elements we care about
+            In addition to that, as I mentioned before the console is an interactive place where you can evaluate
+            expressions and see their results. It will even allow you to introspect and traverse deeply nested
+            javascript objects, which is often handy when playing with large amounts of data.
           </textarea>
         </aside>
       </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### With this knowledge, lets add some JS to <a href="app/01-simple-js/index.html" target="blank">our HTML</a>
+
+          Notes:
+          With all of that, I think it's time we add some Javascript to our app.
+
+          - Add javascript file (index.js). Make it have a window.alert() on load.
+          - Query the DOM to find the elements we care about
+        </textarea>
+      </section>
     </section>
     <section>
-      <section><h2>Events & interations</h2></section>
+      <section>
+        <h2>Events & Interactions</h2>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Being able to simply interact with the DOM is useful, however it also is useful to use Javascript to make
+            an application interactive.
+
+            Let's learn how we can use event handlers to make our application interact with the user.
+          </textarea>
+        </aside>
+      </section>
       <section>
         <h3><code>onClick</code> event (html)</h3>
         <pre><code class="html" data-trim>
@@ -354,6 +537,21 @@ console.log('Hello World!')
           &lt;/button&gt;
 					</code></pre>
         <button onClick="window.alert('Hello COMP2041!')">Say Hello</button>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Here's a super simple example of interactivity which doesn't actually use any real javascript at all.
+
+            Here we use the onClick attribute on button. The value of this attribute is Javascript code to execute
+            when the button is clicked.
+
+            In this example we simply show an alert to the user when the button is clicked.
+
+            It's important to note that this method of binding DOM events isn't great. It means you are mixing code
+            and markup, code is executed via eval, and always runs in the global scope.
+
+            Instead of doing this, it's almost always better to bind an event from within your Javascript codebase.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Binding an event</h3>
@@ -366,7 +564,32 @@ console.log('Hello World!')
           </li>
           <li><code>listener</code>: The function to execute when the event occurs.</li>
         </ul>
-        <!--https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener-->
+        <div class="footnotes">
+          <a class="footnote" target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">
+            https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+          </a>
+        </div>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            To bind an event, we simply need to obtain a reference to an object that can be an event target. This can
+            be the window, the document, or any old DOM node. A DOM node can be found by using the `getElementById`
+            document API.
+
+            Once we have a reference to a event target, we can call `addEventListener` with to arguments. The first is
+            the event you wish to bind.
+
+            This could be something like
+
+            - `click`
+            - `focus`
+            - `blur`
+            - `keydown`
+            - or many others
+
+            The second argument is the function that we wish to execute whenever the event occurs.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>onClick</code> event (html/js)</h3>
@@ -386,6 +609,12 @@ console.log('Hello World!')
             window.alert('Hello COMP2041 from JS!');
           });
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Here's an example where we use Javascript to bind an `onClick` event onto a button. Whenever the button is
+            clicked, an alert will be shown.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>mouseMove</code> event</h3>
@@ -408,12 +637,26 @@ console.log('Hello World!')
             });
           })();
         </script>
-      </section>
-      <section>
-        <h3>Let's make our app interactive</h3>
         <aside class="notes" data-markdown>
           <textarea data-template>
-            - Bind an event on the start button
+            In this example we add an event listener to the `window`. On every mouse movement, the x and y position
+            of the cursor is logged to the console.
+          </textarea>
+        </aside>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Let's make <a href="app/02-events/index.html" target="_blank">our app</a> interactive
+
+          Notes:
+
+          So with all that information, we should now be able to add some interactivity into our application.
+
+          Let's write some code binds an event on the start button click.
+        </textarea>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+
           </textarea>
         </aside>
       </section>
@@ -421,6 +664,12 @@ console.log('Hello World!')
     <section>
       <section>
         <h2>Timers&nbsp;<i class="fas fa-stopwatch"></i></h2>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            It's often useful to schedule work to be done at some point in the future. To achieve this in Javascript
+            we use timers.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>setTimeout</code> / <code>clearTimeout</code></h3>
@@ -430,14 +679,31 @@ console.log('Hello World!')
           }, 1000);
         </code></pre>
         <button id="setTimeoutRunCode">Run Code</button>
+        <div class="footnotes">
+          <a class="footnote" target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">
+            https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+          </a>
+        </div>
         <script>
-          console.log('meme');
           document.getElementById('setTimeoutRunCode').addEventListener('click', () => {
             window.setTimeout(() => {
               window.alert('Done!')
             }, 1000);
           })
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            The part of the timer API in Javascript is `setTimeout` and `clearTimeout`. setTimeout sets a timer which
+            executes a function once the timer expires.
+
+            setTimeout takes two arguments. The first is the callback function that executes when the timer expires.
+            The second argument is the delay in milliseconds that the timer should wait before executing the callback.
+
+            setTimeout returns an ID which identifies the timer that was created. This value can be passed to
+            `clearTimeout` to cancel the timer.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3><code>setInterval</code> / <code>clearInterval</code></h3>
@@ -475,42 +741,77 @@ console.log('Hello World!')
             window.clearInterval(timer);
           });
         </script>
-      </section>
-      <section>
-        <h3>Time to make our stopwatch tick!</h3>
         <aside class="notes" data-markdown>
           <textarea data-template>
-            - Tick the timer every second, and update the UI
+            Similar to `setInterval` is similar to `setTimeout`, however instead of executing the callback a single time,
+            it repeatedly calls a function, with a fixed time delay between each call.
+
+            It takes the same two arguments as `setTimeout`; the first being the callback to execute, and the second
+            being the delay between each invocation.
+
+            Similarly, it also returns an ID which can be passed to `clearInterval` to remove the timer and stop
+            subsequent executions of the callback function.
           </textarea>
         </aside>
       </section>
       <section data-markdown>
         <textarea data-template>
+          ### Time to make <a target="_blank" href="app/03-simple-timer/index.html">our stopwatch</a> tick!
+
+          Notes:
+          Now with a handful of knowledge about timers up our sleeve, I think it's about time we actually make our
+          stopwatch start to tick. Let's create a timer that ticks every second and logs the elapsed time to the
+          console.
+
+          - Tick the timer every second, and log the elapsed time to the console
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
           ### Accuracy of Timers
           - Timers in JS are not accurate and can become skewed.
-          - If we made a timer with just setTimeout/setInterval we would find the timer would drift if there was other computational work to perform.
+          - If we made a timer with just setTimeout/setInterval we would find the timer would drift if there was
+            other computational work to perform.
           - Browsers will typically pause timers when you switch tabs to conserve resources 😎
+
+          Note:
+          As with many things in Javascript, there's always got be a catch. The catch here is that timers aren't
+          always that accurate.
+
+          This means that timers can become skewed and are not the best method to keep track of time. If we
+          continued to make our stopwatch with just `setTimeout` or `setInterval` we would find the timer would
+          drift if there was other computational work to perform.
+
+          Additionally, browsers will typically pause timers when you switch tabs to conserve resources, so this means
+          our app wouldn't be very good at keeping time.
         </textarea>
       </section>
       <section>
         <h3>Clock Drift Demo</h3>
-        <div>
-          <div>
+        <div style="display: flex; justify-content: center;">
+          <div style="margin-right: 1em;">
             <h4>Actual Time</h4>
             <div id="clockDriftDemo__actualTime">0.000</div>
           </div>
-          <div>
+          <div style="margin-left: 1em;">
             <h4>Interval Time</h4>
             <div id="clockDriftDemo__intervalTime">0.000</div>
           </div>
         </div>
         <button id="clockDriftDemo__startButton">Start</button>
         <button id="clockDriftDemo__longTaskButton">Run Long / Blocking Task</button>
-        <!--
-        https://johnresig.com/blog/how-javascript-timers-work/
-        https://www.sitepoint.com/creating-accurate-timers-in-javascript/
-        https://www.reddit.com/r/learnjavascript/comments/3aqtzf/issue_with_setinterval_function_losing_accuracy/
-        -->
+        <div class="footnotes left">
+          <a class="footnote" target="_blank" href="https://johnresig.com/blog/how-javascript-timers-work/">
+            https://johnresig.com/blog/how-javascript-timers-work/
+          </a>
+          <a class="footnote" target="_blank" href="https://www.sitepoint.com/creating-accurate-timers-in-javascript/">
+            https://www.sitepoint.com/creating-accurate-timers-in-javascript/
+          </a>
+          <a class="footnote" target="_blank"
+             href="https://www.reddit.com/r/learnjavascript/comments/3aqtzf/issue_with_setinterval_function_losing_accuracy/">
+            https://www.reddit.com/r/learnjavascript/comments/3aqtzf/issue_with_setinterval_function_losing_accuracy/
+          </a>
+        </div>
         <script>
           (function () {
             const startButton = document.getElementById('clockDriftDemo__startButton');
@@ -570,18 +871,51 @@ console.log('Hello World!')
             })
           })();
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Here is a demo that shows how timers can be affected by other computational work on the main thread.
+
+            The left timer shows the actual time elapsed. We'll get to how that is computed on the next slide.
+
+            On the right, we have the time elapsed which is ticked forward using a timer.
+
+            When we run a slow blocking task on the main thread, we notice that the UI locks up.
+
+            This is because the Javascript runtime is single threaded and no further UI updates can occur whilst
+            the slow task is occurring. Additionally all invocations of the timer's callback were skipped because
+            the main thread was busy doing other computational work.
+
+            A slide later in this deck explains Javascript's run to completion model which is why the UI cannot be
+            updated.
+
+            The important thing to note here is once the UI becomes responsive again, we notice that the counter on
+            the right hasn't incremented.
+
+            It's not just computational work that'll skew the clock though, watch this, I'll change tab and we can see
+            that the timer becomes suspended and only resumes when we return.
+          </textarea>
+        </aside>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Solution To Clock Drift
           - Store the start time and calculate the time elapsed on each render cycle
           - Use setInterval/setTimeout to invoke a render cycle (or better yet; use `requestAnimationFrame` for easy 60FPS updates)
+
+          Note:
+          We can solve the clock drift problem by simply storing the start time and instead calculate the time
+          elapsed on each render cycle.
+
+          In this setup, we would just use setInterval or setTimeout to invoke a re-render of the UI, however it
+          generally would be better practise to use `requestAnimationFrame` which we will touch on later.
         </textarea>
       </section>
       <section>
-        <h3>Lets fix the clock drift in our application</h3>
+        <h3>Lets fix the clock drift in <a href="app/04-fix-clock-drift/index.html" target="_blank">our application</a></h3>
         <aside class="notes" data-markdown>
           <textarea data-template>
+            Let's go ahead and fix the clock drift in our application using this technique.
+
             - Remove clock drift by keeping track of start time
           </textarea>
         </aside>
@@ -592,16 +926,19 @@ console.log('Hello World!')
         <img class="plain" src="images/v8-logo.png" style="background: none; width: 4em; margin-top: -1em;">
         <h2>Behind the Scenes</h2>
         <div>(How JS gets executed in your browser)</div>
-        <!--
-        https://medium.com/reloading/javascript-start-up-performance-69200f43b201
-        https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/
-        -->
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Let's go behind the scenes and take a look at how the browser environment interprets and executes your
+            Javascript.
+          </textarea>
+        </aside>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Scope
 
-          - When your browser encounters a script tag it (downloads and) executes it, placing all global variables onto `window`.
+          - When your browser encounters a script tag it (downloads and) executes it, placing all global variables onto
+            `window`.
           - This can pollute the global scope and cause conflicts.
           - We can solve this with an IIFE:
 
@@ -612,6 +949,16 @@ console.log('Hello World!')
           })();
           // foo is unreachable here
           ```
+
+          Note:
+          Let's talk about scope. More importantly, the global scope.
+
+          In the web browser, the global scope essentially means the `window`. When your browser encounters a
+          script tag it downloads and executes the Javascript, and places all global variables onto the window.
+
+          Unfortunately in many cases this pollutes the global scope and causes conflicts.
+
+          However, we can solve this problem using an IIFE - an immediately invoking function expression.
         </textarea>
       </section>
       <section data-markdown>
@@ -629,16 +976,46 @@ console.log('Hello World!')
           })();
           // foo is unreachable here
           ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">
+              https://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+            </a>
+          </div>
+
+          Note:
+          An IIFE essentially is an anonymous function which we invoke immediately.
+
+          It takes advantage of the lexical scope produced by the function.
+
+          All variables declared within the function cannot be accessed outside of the function, which means it stops
+          polluting the global namespace.
         </textarea>
-        <!--https://en.wikipedia.org/wiki/Immediately-invoked_function_expression-->
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Execution Order
           - A `&lt;script&gt;` tag is parsed & executed as it is encountered when the DOM is parsed.
           - This means it may execute too soon, before all HTML elements are even available.
+          - If the script is large or complex it may block HTML rendering
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank" href="https://eager.io/blog/everything-I-know-about-the-script-tag/">
+              https://eager.io/blog/everything-I-know-about-the-script-tag/
+            </a>
+          </div>
+
+          Note:
+          Another thing that is useful to know is the order in which Javascript is executed.
+
+          A script tag is parsed and executed as it is encountered when the DOM is parsed.
+
+          This means two things;
+
+          - The script may execute too soon, before all HTML elements are event available
+          - If the script is large or complex it may block HTML rendering
         </textarea>
-        <!--https://eager.io/blog/everything-I-know-about-the-script-tag/-->
       </section>
       <section data-markdown>
         <textarea data-template>
@@ -646,7 +1023,7 @@ console.log('Hello World!')
           This is an easy problem to solve in a few different ways;
 
           - Move the script below the HTML elements it targets (or to the bottom of the source)
-          - Use an event listener in JS to listen when the document is ready (`DOMContentLoaded`):
+          - Use an event listener in JS to listen to when the document is ready (`DOMContentLoaded`):
 
           ```js
           function init() {
@@ -654,18 +1031,52 @@ console.log('Hello World!')
           }
           document.addEventListener('DOMContentLoaded', init);
           ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded">
+              https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded
+            </a>
+          </div>
+
+          Note:
+
+          We can solve the execution order problem by either
+
+          - Moving the script tag down below the HTML elements it targets, or just to the bottom of the source
+          - Or alternatively, use an event listener in JS to listen to when the document is ready.
+          ```
         </textarea>
-        <!--https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded-->
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Run to Completion
 
           - Each message is processed completely before any other message is processed.
-          - Your functions cannot be pre-empted by another
+          - Your functions cannot be preempted by another
           - Your function will run entirely before any other code runs
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion
+            </a>
+          </div>
+
+          Note:
+          Another thing that is handy to know about is the run to completion model that the Javascript runtime uses.
+
+          I touched on this earlier in the clock drift demo. This is the reason timers and other callbacks may be
+          delayed.
+
+          Each unit of work (or message) is processed completely before any other message is processed.
+
+          This means that your function cannot be preempted by another. For example, if a timer is due, it cannot
+          run until the current task is completely finished.
+
+          This means your function will run entirely before any other code runs, which fortunately for us,
+          eliminates a whole class of problems to do with concurrency.
         </textarea>
-        <!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion-->
       </section>
       <section>
         <h4>Example</h4>
@@ -686,6 +1097,12 @@ console.log('Hello World!')
         </code></pre>
         <button id="runToCompletionRunCode">Run Code</button>
         <pre id="runToCompletionConsole"></pre>
+        <div class="footnotes">
+          <a class="footnote" target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion">
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion
+          </a>
+        </div>
         <script>
           function runToCompletionDemo() {
             const s = new Date().getSeconds();
@@ -709,11 +1126,33 @@ console.log('Hello World!')
 
           document.getElementById('runToCompletionRunCode').addEventListener('click', runToCompletionDemo);
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Here's an example demonstrating the run to completion model.
+
+            This code stores the current time, then enqueues some work onto the event loop to execute in 500ms time.
+
+            The function that is enqueued will write the time the function is executed after to the console.
+
+            However before that function can execute the current function must be completed. The loop keeps the main
+            thread busy for two seconds.
+
+            Because the main thread is busy on the current function, and cannot be preempted, the work that was
+            enqueued is delayed until after the `while (true)` loop is finished.
+          </textarea>
+        </aside>
       </section>
     </section>
     <section>
       <section>
         <h2>Querying the DOM</h2>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            So the we've almost got all the pieces we need to finish building our user friendly interactive application.
+
+            Finally let's take a look at how we can interact with the DOM to update our UI.
+          </textarea>
+        </aside>
       </section>
       <section data-markdown>
         <textarea data-template>
@@ -721,7 +1160,7 @@ console.log('Hello World!')
 
           <ul style="font-size: 0.7em; margin-bottom: 1em;">
             <li>`getElementById`: Finds an element by it's `id` attribute. Returns an `Element` object.</li>
-            <li>`getElementByClassName`: Finds elements with a matching `class` attribute. Returns an array-like object.</li>
+            <li>`getElementsByClassName`: Finds elements with a matching `class` attribute. Returns an array-like object.</li>
             <li>`getElementsByTagName`: Finds elements with a matching tag name.</li>
             <li>`querySelector`: Magical jQuery-like DOM query method. Returns the first element matching the CSS selector given.</li>
           </ul>
@@ -729,10 +1168,25 @@ console.log('Hello World!')
           ##### Using `querySelector`
 
           ```js
+          // id="my-button"
           const button = document.querySelector('#my-button')
+          // class="my-button"
           const button = document.querySelector('.my-button')
+          // class="my-button" nested inside &lt;body&gt;
           const button = document.querySelector('body > .my-button')
           ```
+
+          Note:
+          We touched on this in an earlier section with `querySelector` and `getElementByID`, however I think it's
+          important to identify a few of the different ways we can query the DOM.
+
+          - `getElementById` finds an element by it's `id` attribute
+          - `getElementsByClassName` finds a set of elements with a matching `class` attribute.
+          - `getElementsByTagName` finds elements with a matching tag name.
+          - `querySelector` is the magical jquery-like DOM query method. It returns the first element matching the
+          CSS selector given.
+
+          There's a quick snippet on how we can use querySelector to find elements.
         </textarea>
       </section>
       <section>
@@ -759,6 +1213,13 @@ console.log('Hello World!')
             });
           })();
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Once we have reference to an element, we can query it's properties and attributes.
+
+            In this demo we simply read the content of the element using it's `innerText` property.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Querying Element Bounds</h3>
@@ -783,16 +1244,29 @@ console.log('Hello World!')
             });
           })();
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Similar to the previous demo, we can query the element to find out it's bounding rectangle using
+            `getBoundingClientRect`
+          </textarea>
+        </aside>
       </section>
     </section>
     <section>
       <section>
         <h2>Manipulating the DOM</h2>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Whilst reading DOM node properties can be somewhat useful, it's often better complimented by being able to
+            manipulate the nodes in some way or another.
+
+            Let's take a look at the sorts of things we can do to some DOM nodes
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Adding a CSS class</h3>
-        <p>Once we have reference to a DOM node, we can manipulate it. This demo adds a class to a <code>span</code>
-          node.</p>
+        <p>This demo adds a class to a <code>span</code> node.</p>
         <div style="border: 1px solid #ccc;">
           <p>Hello <span id="addingCssClassDemo__span">World!</span></p>
         </div>
@@ -821,13 +1295,18 @@ console.log('Hello World!')
             });
           })()
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            In this demo, we find the `worldSpan` element, and add the `red` class to it to alter it's appearance.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Modifying Inline Styles</h3>
         <div style="border: 1px solid #ccc;">
           <p>Hello <span id="modifyingInlineStylesDemo__span">World!</span></p>
         </div>
-        <pre><code data-trim class="html">
+        <pre><code data-trim class="html" id="modifyingInlineStylesDemo__htmlCode">
           &lt;p&gt;Hello &lt;span id=&quot;worldSpan&quot;&gt;World!&lt;/span&gt;&lt;/p&gt;
         </code></pre>
         <pre><code data-trim class="js">
@@ -839,11 +1318,19 @@ console.log('Hello World!')
           (function () {
             const runButton = document.getElementById('modifyingInlineStylesDemo__runCode');
             const span = document.getElementById('modifyingInlineStylesDemo__span');
+            const htmlCode = document.getElementById('modifyingInlineStylesDemo__htmlCode');
             runButton.addEventListener('click', () => {
               span.style.fontSize = '2em';
+              htmlCode.innerText = '<p>Hello <span style="font-size: 2em;">World!</span></p>\n';
             });
           })()
         </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Similarly, in this demo instead of adding a class to the span, we adjust the fontSize by using an inline
+            style.
+          </textarea>
+        </aside>
       </section>
       <section>
         <h3>Modifying innertext</h3>
@@ -867,50 +1354,133 @@ console.log('Hello World!')
             });
           })();
         </script>
-      </section>
-      <section>
-        <h3>Now that we know how to manipulate the DOM, lets render the stopwatch on the page.</h3>
         <aside class="notes" data-markdown>
           <textarea data-template>
+            Finally, it's also possible to update the content of any HTML element. In this demo we update the text
+            within a DOM node to something new.
+          </textarea>
+        </aside>
+      </section>
+      <section>
+        <h3>Now that we know how to manipulate the DOM, lets <a target="_blank" href="app/05-render-to-dom/index.html">render the stopwatch</a> on the page.</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            We now know how to manipulate the DOM, so let's use this to render the stopwatch onto the page, rather
+            than logging to the console
+
             - Render the time elapsed on the page
           </textarea>
         </aside>
       </section>
     </section>
     <section>
-      <section><h2>60FPS</h2></section>
-      <section data-markdown>
-        <textarea data-template>
-        `window.requestAnimationFrame()`
-         - Tells the browser that you wish to perform an animation and to call the given function before the next repaint.
-         - Call this method whenever you're ready to update your animation onscreen.
-         - The number of callbacks is usually 60 times per second, but should match the display refresh rate.
-        </textarea>
-        <!--https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame-->
-      </section>
       <section>
-        <h3>Using <code>requestAnimationFrame</code> lets improve our solution for 60fps</h3>
+        <h2>60FPS</h2>
         <aside class="notes" data-markdown>
           <textarea data-template>
+            I also think it's important to have a brief chat about web performance and frame rate.
+
+            Having a buttery smooth experience in your web application is one of the best ways to keep your users
+            happy.
+
+            As soon as your application feels choppy, users may feel inclined to leave.
+          </textarea>
+        </aside>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          #### `window.requestAnimationFrame()`
+
+          - Tells the browser that you wish to perform an animation and to call the given function before the next repaint.
+          - Call this method whenever you're ready to update your animation onscreen.
+          - The number of callbacks is usually 60 times per second, but should match the display refresh rate.
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">
+              https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+            </a>
+          </div>
+
+          Note:
+          An API exists called `requestAnimationFrame` which helps you batch UI updates into frames.
+
+          Using this API tells the browser you wish to perform an animation or UI update and to call the function
+          before the next repaint.
+
+          The number of batches that occur are usually 60 times per second, but as per the W3C spec, should match the
+          display refresh rate.
+        </textarea>
+      </section>
+      <section>
+        <h3><code>requestAnimationFrame</code> demo</h3>
+        <pre><code class="js" data-trim>
+          const box = document.getElementById('box');
+          let offset = 0;
+
+          function renderFrame() {
+            requestAnimationFrame(() => {
+              offset += 10;
+              box.style.transform = `translateX(${offset}px)`;
+
+              // Enqueue a subsequent render cycle for the next frame.
+              renderFrame();
+            });
+          }
+
+          renderFrame();
+        </code></pre>
+        <div style="margin: 1em;">
+          <div id="requestAnimationFrameDemo__box" style="width: 40px; height: 40px; background: blue"></div>
+        </div>
+        <button id="requestAnimationFrameDemo__runCode">Run Code</button>
+        <script>
+          (function () {
+            const box = document.getElementById('requestAnimationFrameDemo__box');
+            const runButton = document.getElementById('requestAnimationFrameDemo__runCode');
+            let offset = 0;
+
+            function renderFrame() {
+              requestAnimationFrame(() => {
+                offset += 5;
+                box.style.transform = `translateX(${offset}px)`;
+
+                // Enqueue a subsequent render cycle for the next frame.
+                if (offset < window.innerWidth) {
+                  renderFrame();
+                } else {
+                  box.style.transform = '';
+                }
+              });
+            }
+
+            runButton.addEventListener('click', () => {
+              offset = 0;
+              renderFrame();
+            })
+          })();
+        </script>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            Here's a demo of `requestAnimationFrame`, which uses a recursive call to enqueue subsequent UI updates at
+            60 frames per second.
+
+            You might be wondering why that doesn't stack overflow after a while, and that's because of an optimisation
+            built into the Javascript environment called tail call optimisation.
+          </textarea>
+        </aside>
+      </section>
+      <section>
+        <h3>Using <code>requestAnimationFrame</code> lets improve <a target="_blank" href="app/06-request-animation-frame/index.html">our application</a> to have 60fps updates</h3>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            With that knowledge of requestAnimationFrame, let's update our stopwatch to render the time elapsed at 60
+            frames per second.
+
             - Use `requestAnimationFrame` to get 60FPS timer update
           </textarea>
         </aside>
       </section>
-    </section>
-    <section>
-      <section><h2>Web Frameworks</h2></section>
-      <section><h3>jQuery</h3></section>
-      <section><h3>Backbone</h3></section>
-      <section><h3>Angular.js</h3></section>
-      <section><h3>React</h3></section>
-      <section><h3>Vue</h3></section>
-      <section><h3>Angular</h3></section>
-    </section>
-    <section>
-      <h2>References</h2>
-      <ul>
-        <li></li>
-      </ul>
     </section>
     <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
       <div class="has-dark-background">
@@ -924,6 +1494,20 @@ console.log('Hello World!')
             if you are interested</p>
         </div>
       </div>
+      <aside class="notes" data-markdown>
+        <textarea data-template>
+          And that's about it! It'd like to thank you all for having me here and a special thanks to Andrew Taylor
+          and Alex Hinds for giving me this opportunity to present this content here today.
+
+          If you have any questions I'll be hanging around for a little bit, or alternatively send me an email or tweet
+          me.
+
+          If web development is something that you are passionate about, I highly recommend you apply for our summer intern
+          program or if you are graduating this year, our graduate program. Once again, I'm happy to chat now in
+          person, or feel free to send me an email with your resume and details and I'll forward it onto our
+          recruitment team.
+        </textarea>
+      </aside>
     </section>
   </div>
 </div>

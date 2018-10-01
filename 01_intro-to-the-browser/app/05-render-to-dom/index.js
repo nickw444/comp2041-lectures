@@ -1,27 +1,28 @@
-const startButtonEl = document.getElementById('startButton');
 const timerEl = document.getElementsByClassName('timer')[0];
+const startButtonEl = document.getElementById('startButton');
+
+let startTime = undefined;
 let timer = undefined;
-let time = 0;
 
 function onStartClick() {
   if (!timer) {
-    time = 0;
-    timer = window.setInterval(tick, 1000);
-    startButtonEl.innerText = 'Stop';
+    startTime = Date.now();
+    timer = window.setInterval(update, 1000); // (Try 1000/60 for 60 updates per second)
+    startButtonEl.innerText = 'Stop'
   } else {
+    // Timer is already running, cancel it.
     window.clearInterval(timer);
     timer = undefined;
-    startButtonEl.innerText = 'Start';
+    startButtonEl.innerText = 'Start'
   }
 }
 
-function tick() {
-  time += 1000;
+function update() {
   paintTimer();
 }
 
 function paintTimer() {
-  const secondsElapsed = time / 1000;
+  const secondsElapsed = (Date.now() - startTime) / 1000;
   const seconds = Math.floor(secondsElapsed);
   const millis = Math.floor((secondsElapsed % 1) * 1000).toString();
   timerEl.innerText = `${seconds}.${millis.padStart(3, '0')}`;
