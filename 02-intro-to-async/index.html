@@ -1,0 +1,165 @@
+<html>
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Intro to the Browser & the DOM</title>
+
+  <link rel="stylesheet" href="../css/reveal.css">
+  <link rel="stylesheet" href="../css/theme/canva.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="../lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
+
+  <!-- Printing and PDF exports -->
+  <script data-cfasync="false">
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
+      <div class="has-dark-background">
+        <img class="plain" width="100" style="background: none;"
+             src="images/canva-logo.png"/>
+        <h2>Intro to Async & Promises</h2>
+        <p style="font-size: 0.6em">Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i
+            class="fab fa-twitter"></i> @nickw444</p>
+      </div>
+    </section>
+    <section data-markdown>
+      <textarea data-template>
+        * What is async
+          * visual demo of the event loop
+          * http://latentflip.com/loupe/
+          * Concurrency model comparison
+            * Multi threading
+            * 
+          * Javascript concurrency model
+            * Single Threaded
+
+
+        * Why callbacks?
+          * How it works
+          * try/catch with callbacks. `try { setTimeout(x, 0) } catch (e) { console.log('caught') }`
+          * Callback hell
+        * Promises
+          * An abstraction around async work giving us access to “future” values.
+            * A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+          * Creating promises
+          * Promise methods (Promise.all, etc)
+            * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+            * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+          * Composition/chaining of promises
+          * When not to use them
+            * If you're doing synchronous work
+            * In place of events that occur numerous times
+            * When you have a callback situation where the callback is designed to be called multiple times
+            * For situations where the action often does not finish or occur: This is just inefficient memory usage and is probably better served by some sort of event notification
+            * https://stackoverflow.com/a/37531576
+          * how the internals work
+            * https://github.com/kriskowal/q/blob/v1/design/README.md
+            * https://www.promisejs.org/implementing/
+          * promisify()
+            * https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original
+          * promise hell
+            * https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513
+          * async await
+          * Cancellations
+        * Fetching Data / AJAX
+          * XHR (sync) (demo with browser lockup)
+          * XHR (async)
+          * fetch()
+        * Single Page Applications
+        * Web Workers
+        * Frameworks
+        * Approaches to assignment subproblems
+      </textarea>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## About Me
+
+          - Frontend Engineer / Technical Lead @ Canva
+          - Graduated UNSW in 2016 (Computer Science)
+          - COMP2041 student in 2014
+          - COMP2041 tutor in 2015
+
+          Note:
+          I think it's worthwhile giving some context about why I'm here today giving this lecture;
+
+          - I'm actually a UNSW graduate who took COMP2041 in 2014 and tutored it in 2015.
+          - The course seems to have changed a lot since then and
+          - I am really liking the direction it's taking.
+          - After graduating UNSW I applied to Canva for a Frontend Engineering role.
+          - Canva is a web-based graphic design tool,
+          - so you could imagine there is a lot of frontend work to be done
+        </textarea>
+      </section>
+    </section>
+    <section data-background="linear-gradient(90deg,#00c4cc,#7d2ae8)" data-background-size="cover">
+      <div class="has-dark-background">
+        <img class="plain" width="100" style="background: none; "
+             src="images/canva-logo.png"/>
+        <h2>Thanks</h2>
+        <div style="font-size:0.4em;">
+          <p>Nick Whyte | <i class="fab fa-github"></i> @nickw444 | <i class="fab fa-twitter"></i> @nickw444</p>
+          <p style="opacity: 0.8">p.s. we are looking for summer interns and 2019 graduates! <br/>Please email
+            nick@canva.com
+            if you are interested</p>
+        </div>
+      </div>
+      <aside class="notes" data-markdown>
+        <textarea data-template>
+          And that's about it! It'd like to thank you all for having me here and a special thanks to Andrew Taylor
+          and Alex Hinds for giving me this opportunity to present this content here today.
+
+          If you have any questions I'll be hanging around for a little bit, or alternatively send me an email or tweet
+          me.
+
+          If web development is something that you are passionate about, I highly recommend you apply for our summer intern
+          program or if you are graduating this year, our graduate program. Once again, I'm happy to chat now in
+          person, or feel free to send me an email with your resume and details and I'll forward it onto our
+          recruitment team.
+        </textarea>
+      </aside>
+    </section>
+  </div>
+</div>
+
+<script data-cfasync="false" src="../lib/js/head.min.js"></script>
+<script data-cfasync="false" src="../js/reveal.js"></script>
+
+<script data-cfasync="false">
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    history: true,
+    center: true,
+
+    dependencies: [
+      {src: '../plugin/markdown/marked.js'},
+      {src: '../plugin/external/external.js'},
+      {src: '../plugin/markdown/markdown.js'},
+      {src: '../plugin/notes/notes.js', async: true},
+      {src: '../plugin/sampler/sampler.js'},
+      {
+        src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      },
+    ]
+  });
+</script>
+</body>
+</html>
