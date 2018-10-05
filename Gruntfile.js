@@ -140,6 +140,7 @@ module.exports = function(grunt) {
         files: [
           root.map(path => path + '/*.html'),
           root.map(path => path + '/01-intro-to-the-browser/*.html'),
+          root.map(path => path + '/02-intro-to-async/*.html'),
         ]
       },
       markdown: {
