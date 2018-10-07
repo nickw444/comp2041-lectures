@@ -35,55 +35,6 @@
             class="fab fa-twitter"></i> @nickw444</p>
       </div>
     </section>
-    <section data-markdown>
-      <textarea data-template>
-        * What is async
-          * visual demo of the event loop
-          * http://latentflip.com/loupe/
-          * Concurrency model comparison
-            * Multi threading
-            * 
-          * Javascript concurrency model
-            * Single Threaded
-
-
-        * Why callbacks?
-          * How it works
-          * try/catch with callbacks. `try { setTimeout(x, 0) } catch (e) { console.log('caught') }`
-          * Callback hell
-        * Promises
-          * An abstraction around async work giving us access to “future” values.
-            * A Promise is an object representing the eventual completion or failure of an asynchronous operation.
-          * Creating promises
-          * Promise methods (Promise.all, etc)
-            * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-            * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
-          * Composition/chaining of promises
-          * When not to use them
-            * If you're doing synchronous work
-            * In place of events that occur numerous times
-            * When you have a callback situation where the callback is designed to be called multiple times
-            * For situations where the action often does not finish or occur: This is just inefficient memory usage and is probably better served by some sort of event notification
-            * https://stackoverflow.com/a/37531576
-          * how the internals work
-            * https://github.com/kriskowal/q/blob/v1/design/README.md
-            * https://www.promisejs.org/implementing/
-          * promisify()
-            * https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original
-          * promise hell
-            * https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513
-          * async await
-          * Cancellations
-        * Fetching Data / AJAX
-          * XHR (sync) (demo with browser lockup)
-          * XHR (async)
-          * fetch()
-        * Single Page Applications
-        * Web Workers
-        * Frameworks
-        * Approaches to assignment subproblems
-      </textarea>
-    </section>
     <section>
       <section data-markdown>
         <textarea data-template>
@@ -103,6 +54,371 @@
           - After graduating UNSW I applied to Canva for a Frontend Engineering role.
           - Canva is a web-based graphic design tool,
           - so you could imagine there is a lot of frontend work to be done
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## What is Async
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          - **synchronous**: Operations can only occur one at a time.
+          - **asynchronous**: Multiple operations can occur at the same time. Programmers can parallelise their program.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Concurrency models
+
+          * Coroutines / Cooperative Multitasking
+          * Threads / Preemptive Multitasking
+          * Event Driven
+          * https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Threads / Preemptive Multitasking
+
+          - A thread can be preempted, so mutex's and semaphores required to guard critical sections & variables.
+          - Typical multi-tasking model found in many languages like Java and Python.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Co-routines / Cooperative Multitasking
+
+          - co-routines can cooperatively "yield" to other co-routines.
+          - "yield" saves the state of co-routine A, and resumes B's state from it's previous yield point.
+          - No preemption between yields, so no need for mutex's or semaphores to guard critical sections.
+
+          - https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Event Driven
+
+          - External entities generate (post) events. (i.e. button click)
+          - Event loop waits for events and calls an appropriate event handler.
+          - Event handler is a function that runs to completion and returns to the event loop.
+          - No preemption, so no need for mutex's or semaphores
+          - Cannot parallelise computational workloads ☹️
+
+          * https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+
+          Notes:
+
+          - Handlers must not block or yield.
+          - Handlers must be shorted lived otherwise risk blocking other important work in the queue
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Javascript Concurrency Model
+
+          - Javascript is single threaded
+          - Event Driven
+          - Unable to parallelise computational tasks (without using WebWorkers or `process.fork` in node)
+          - Each handler is run to completion before a new task is started
+
+          ```js
+          while (queue.waitForMessage()) {
+            queue.processNextMessage();
+          }
+          ```
+
+          - A typical Javascript program will be IO Bound, rather than CPU bound, which makes an event driven model very appropriate
+
+          https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Event_loop
+        </textarea>
+      </section>
+      <section data-markdown data-background-iframe="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D">
+        <textarea data-template>
+          Notes:
+
+          * visual demo of the event loop
+          * http://latentflip.com/loupe/
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## `callbacks &rArr; {}`
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### What is a callback
+
+          - A function that is called when the pending work has completed
+          - Can use either a named function or an anonymous lamdba:
+
+          ```js
+          fs.readFile('foo.txt', (result, err) => {
+            // Do something with result here
+          })
+          ```
+
+          ```js
+          function onComplete(result, err) {
+            // Do something with result here
+          }
+          fs.readFile('foo.txt', onComplete)
+          ```
+
+
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Why Do We Use Callbacks?
+
+          - Because of the event loop
+          - Handlers cannot block whilst they wait for a result otherwise important tasks on the queue will be delayed
+          - Therefore they must register a completion handler: A _callback_
+
+          ```js
+          fs.readFile('foo.txt', (result, err) => {
+            if (err) {
+              console.error('Something went wrong:', err)
+              return;
+            }
+
+            // Do something with result here
+          })
+          ```
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Callback Gotchas
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### try-catch with callbacks
+
+          ```js
+          function onClick() {
+            throw new Error('Something went wrong');
+          }
+
+          buttonEl.addEventListener('click', onClick);
+          ```
+
+          ```
+          Error: Something went wrong
+          ```
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### try-catch with callbacks
+
+          <pre><code class="js" data-trim>
+            function onClick() {
+              throw new Error('Something went wrong');
+            }
+
+            try {
+              buttonEl.addEventListener('click', onClick);
+            } catch (e) {
+              console.log('Caught error on click:', e);
+            }
+          </code></pre>
+
+          <pre class="fragment"><code data-trim>
+            Error: Something went wrong
+          </code></pre>
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### try-catch with callbacks
+
+          <pre><code class="js" data-trim>
+            function onClick() {
+              throw new Error('Something went wrong');
+            }
+
+            buttonEl.addEventListener('click', () => {
+              try {
+                onClick();
+              } catch (e) {
+                console.log('Caught error on click:', e);
+              }
+            });
+          </code></pre>
+          <pre class="fragment"><code data-trim>
+            Caught error on click: Something went wrong
+          </code></pre>
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Callback Hell
+
+          ```js
+          getData(function(x){
+            getMoreData(x, function(y){
+              getMoreData(y, function(z){
+                ...
+              });
+            });
+          });
+          ```
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Resolving Callback Hell
+
+          - Keep your code shallow
+          - Don't nest functions. Give them names and place them at the top level of your program
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### When Not To Use Callbacks
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## Promises
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### What are Promises
+
+          * An abstraction around async work giving us access to “future” values.
+          * A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Promise Terminology
+
+          - https://developers.google.com/web/fundamentals/primers/promises
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Creating Promises
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Promise methods
+
+          * `Promise.all`, etc
+          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Composition / Chaining of Promises
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### When not to use Promises
+
+          * If you're doing synchronous work
+          * In place of events that occur numerous times
+          * When you have a callback situation where the callback is designed to be called multiple times
+          * For situations where the action often does not finish or occur: This is just inefficient memory usage and is probably better served by some sort of event notification
+          * https://stackoverflow.com/a/37531576
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### How Promises work
+
+          * https://github.com/kriskowal/q/blob/v1/design/README.md
+          * https://www.promisejs.org/implementing/
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### promisify()
+
+          * https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Promise hell
+
+          * https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### async await
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Cancellation
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Implement our own Promise class
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## Fetching Data / AJAX
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### XHR (sync)
+
+          - Demo with browser lockup
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### XHR (async)
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### whatwg fetch()
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## Single Page Applications
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## Web Workers
+        </textarea>
+      </section>
+    </section>
+    <section>
+      <section data-markdown>
+        <textarea data-template>
+          ## Frameworks
         </textarea>
       </section>
     </section>
