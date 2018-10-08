@@ -46,14 +46,12 @@
           - COMP2041 tutor in 2015
 
           Note:
-          I think it's worthwhile giving some context about why I'm here today giving this lecture;
 
-          - I'm actually a UNSW graduate who took COMP2041 in 2014 and tutored it in 2015.
-          - The course seems to have changed a lot since then and
-          - I am really liking the direction it's taking.
-          - After graduating UNSW I applied to Canva for a Frontend Engineering role.
-          - Canva is a web-based graphic design tool,
-          - so you could imagine there is a lot of frontend work to be done
+          - Graduated UNSW in 2016 (Computer Science)
+          - Took COMP2041 as a student in 2014
+          - Was a COMP2041 tutor in 2015
+          - Frontend Engineer / Technical Lead @ Canva
+
         </textarea>
       </section>
     </section>
@@ -67,6 +65,16 @@
         <textarea data-template>
           - **synchronous**: Operations can only occur one at a time.
           - **asynchronous**: Multiple operations can occur at the same time. Programmers can parallelise their program.
+
+          Notes:
+
+          There's two different ways we can solve many problems
+
+          - Synchronous, where operations occur one at a time.
+          - Usually sequentially where each operation occurs after the previous
+          - Asynchronous programming allows multiple operations to occur at the same time
+          - Allows us to parallelize our programs.
+          - requires extra care to deal with races and locking of variables
         </textarea>
       </section>
       <section data-markdown>
@@ -76,7 +84,17 @@
           * Coroutines / Cooperative Multitasking
           * Threads / Preemptive Multitasking
           * Event Driven
-          * https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+
+          <div class="footnotes">
+            <a href="https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf" class="footnote"
+               target="_blank">
+              https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+            </a>
+          </div>
+
+          Notes:
+
+          - To get a better understanding of how Javascript works lets learn about a handful of different concurrency models.
         </textarea>
       </section>
       <section data-markdown>
@@ -85,6 +103,19 @@
 
           - A thread can be preempted, so mutex's and semaphores required to guard critical sections & variables.
           - Typical multi-tasking model found in many languages like Java and Python.
+
+          <div class="footnotes">
+            <a href="https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf" class="footnote"
+               target="_blank">
+              https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+            </a>
+          </div>
+
+          Notes:
+
+          - Out of the box concurrency model found in many languages like Java and Python.
+          - Threads can be preempted, meaning, execution may be suspended to execute some other paused routine.
+          - Therefore, we need to guard critical sections and variables
         </textarea>
       </section>
       <section data-markdown>
@@ -95,7 +126,20 @@
           - "yield" saves the state of co-routine A, and resumes B's state from it's previous yield point.
           - No preemption between yields, so no need for mutex's or semaphores to guard critical sections.
 
-          - https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+          <div class="footnotes">
+            <a href="https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf" class="footnote"
+               target="_blank">
+              https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+            </a>
+          </div>
+
+          Notes:
+
+          - Coroutines are another way we can achieve concurrency within a program
+          - Each co-routine cooperatively yields to another co-routine
+          - A call to yield saves the state of co-routine A and resume's B's state from it's previous yield point.
+          - No preemption in this model, so there is no need for mutex's or semaphores to guard critical sections
+
         </textarea>
       </section>
       <section data-markdown>
@@ -108,21 +152,48 @@
           - No preemption, so no need for mutex's or semaphores
           - Cannot parallelise computational workloads ☹️
 
-          * https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+          <div class="footnotes">
+            <a href="https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf" class="footnote"
+               target="_blank">
+              https://www.cse.unsw.edu.au/~cs9242/18/lectures/02-threadsevents.pdf
+            </a>
+          </div>
 
           Notes:
 
+          - Another concurrency model is events.
+          - External entities generate events and enqueue them onto the event queue.
+          - For example, a user clicking a button.
+          - The event loop waits for events, and deqeues them from the event queue.
+          - An event handler is run to handle the message from the queue.
+          - This handler runs to completion and returns to the event loop once complete
           - Handlers must not block or yield.
           - Handlers must be shorted lived otherwise risk blocking other important work in the queue
+          - In this model, there is no preemption, so there's no need for mutex's or semaphores.
+          - However it's not possible to parallelise computational workloads when using a single threaded event loop.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Event Driven
+
+          ![](images/event-loop.jpg)
+
+          Notes:
+
+          Here's a diagram of the event loop in action.
+
+          - Event emitters place events into the event queue.
+          - The event loop dequeues the events and executes the apropriate event handler
+          - The handler executes and runs to completion, before returning to the event loop, where the next event is processed
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Javascript Concurrency Model
 
-          - Javascript is single threaded
-          - Event Driven
-          - Unable to parallelise computational tasks (without using WebWorkers or `process.fork` in node)
+          - Javascript is single threaded, event driven
+          - Unable to parallelise computational tasks
           - Each handler is run to completion before a new task is started
 
           ```js
@@ -131,13 +202,29 @@
           }
           ```
 
-          - A typical Javascript program will be IO Bound, rather than CPU bound, which makes an event driven model very appropriate
+          - A typical Javascript program will be IO Bound, rather than CPU bound, which means the event driven model is appropriate
 
-          https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Event_loop
+          <div class="footnotes">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Event_loop" class="footnote"
+               target="_blank">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Event_loop
+            </a>
+          </div>
+
+          Notes:
+
+          - Javascript is single threaded and event driven
+          - Unable to parallelise computational tasks without using WebWorkers or `process.fork` in node
+          - Each handler is run to completion before a new task is started
+          - A typical Javascript program will be IO Bound, rather than CPU bound, which means the event driven model is appropriate
+
         </textarea>
       </section>
-      <section data-markdown data-background-iframe="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D">
+      <section data-markdown>
         <textarea data-template>
+          ### [Event Loop Demo](http://latentflip.com/loupe/)
+
+
           Notes:
 
           * visual demo of the event loop
@@ -171,7 +258,14 @@
           fs.readFile('foo.txt', onComplete)
           ```
 
+          Notes:
 
+          - A function that is called when the pending work has completed
+          - It can be used to inform the caller the work has completed
+          - But can also be used to pass some data back to the caller on completion
+          - Can use either a named function or an anonymous lamdba
+          - In the example, the function readFile accepts a callback to call on completion.
+          - When the function is called, it receives the result or any error that occurred during the operation
         </textarea>
       </section>
       <section data-markdown>
@@ -179,7 +273,7 @@
           ### Why Do We Use Callbacks?
 
           - Because of the event loop
-          - Handlers cannot block whilst they wait for a result otherwise important tasks on the queue will be delayed
+          - Functions cannot block whilst they wait for a result otherwise important tasks on the queue will be delayed
           - Therefore they must register a completion handler: A _callback_
 
           ```js
@@ -192,11 +286,28 @@
             // Do something with result here
           })
           ```
+
+          Notes:
+
+          - Because of the concurrency model of Javascript.
+          - Event handlers cannot block whilst they wait for a result otherwise important tasks on the queue will be delayed
+          - Other important tasks could include timers or even repainting the window.
+          - This would make the page freeze whilst it executed your long running task
+          - For this reason, we register a callback to execute once the long running task completes.
+          - In the example, we are opening a file foo.txt using node.
+          - Since this is a potentially slow operation as it involves a handful of blocking syscalls
+          - Therefore, we pass a callback to execute once the operation is completed.
+          - Once the operation is completed, a message is enqueued into the event queue
+          - It is dequeued by the event loop, and the event handler is executed.
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Callback Gotchas
+
+          Notes:
+
+          As with most things in Javascript, there are some gotcha's, so lets take a look at those.
         </textarea>
       </section>
       <section data-markdown>
@@ -204,16 +315,23 @@
           ### try-catch with callbacks
 
           ```js
-          function onClick() {
+          function doThing() {
             throw new Error('Something went wrong');
           }
 
-          buttonEl.addEventListener('click', onClick);
+          window.setTimeout(() => doThing(), 1000)
           ```
 
           ```
           Error: Something went wrong
           ```
+
+
+          Notes:
+
+          - Here's a fun one.
+          - 1000ms after the code begins execution an error is thrown.
+          - What if we wanted to catch that error and handle it with a try/catch?
         </textarea>
       </section>
       <section data-markdown>
@@ -221,12 +339,11 @@
           ### try-catch with callbacks
 
           <pre><code class="js" data-trim>
-            function onClick() {
+            function doThing() {
               throw new Error('Something went wrong');
             }
-
             try {
-              buttonEl.addEventListener('click', onClick);
+              window.setTimeout(() => doThing(), 1000)
             } catch (e) {
               console.log('Caught error on click:', e);
             }
@@ -235,6 +352,11 @@
           <pre class="fragment"><code data-trim>
             Error: Something went wrong
           </code></pre>
+
+          Notes:
+
+          - Just wrap the setTimeout call in a try/catch and have it catch the error, right?
+          - So who thinks this would work?
         </textarea>
       </section>
       <section data-markdown>
@@ -242,21 +364,53 @@
           ### try-catch with callbacks
 
           <pre><code class="js" data-trim>
-            function onClick() {
+            function doThing() {
+              throw new Error('Something went wrong');
+            }
+            try {
+              window.setTimeout(() => doThing(), 0)
+            } catch (e) {
+              console.log('Caught error on click:', e);
+            }
+          </code></pre>
+
+          <pre class="fragment"><code data-trim>
+            Error: Something went wrong
+          </code></pre>
+
+          Notes:
+
+          - How about this? We execute doThing immediately, with a 0ms delay
+          - Unfortunately this exhibits the same problem.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### try-catch with callbacks
+
+          <pre><code class="js" data-trim>
+            function doThing() {
               throw new Error('Something went wrong');
             }
 
-            buttonEl.addEventListener('click', () => {
+            window.setTimeout(() => {
               try {
-                onClick();
+                doThing();
               } catch (e) {
                 console.log('Caught error on click:', e);
               }
-            });
+            }), 1000)
           </code></pre>
+
           <pre class="fragment"><code data-trim>
             Caught error on click: Something went wrong
           </code></pre>
+
+          Notes:
+
+          - The reason the previous solutions don't work is because we aren't actually wrapping the right context
+          - Since the function doThing is being executed on a subsequent event loop cycle, it is executed in it's own context.
+          - Therefore we must catch the error within it's own context.
         </textarea>
       </section>
       <section data-markdown>
@@ -272,6 +426,12 @@
             });
           });
           ```
+
+          Notes:
+
+          - Another fun part of writing javascript is dealing with Callback hell.
+          - Three function calls
+          - Dependent data
         </textarea>
       </section>
       <section data-markdown>
@@ -280,11 +440,55 @@
 
           - Keep your code shallow
           - Don't nest functions. Give them names and place them at the top level of your program
+
+          Notes:
+
+          - Keep your code shallow
+          - Do this by giving functions names and placing them at the top level of the module
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### When Not To Use Callbacks
+
+          - When your work is synchronous
+
+          Notes:
+
+          - Additionally, if you're using callbacks when your code is only synchronous,
+          - then there's no need to use callbacks.
+          - You are just adding unnecessary complexity.
+
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### When Not To Use Callbacks
+
+           ```js
+          function sayHello(callback) {
+            console.log('Hello!');
+            callback();
+          }
+
+          sayHello(() => {
+            console.log('We said hello.');
+          });
+          ```
+
+          ```js
+          function sayHello() {
+            console.log('Hello!');
+          }
+
+          sayHello();
+          console.log('We said hello.');
+          ```
+
+          Notes:
+
+          - Example of a function that uses callbacks unnecessarily
+          - Can be refactored to just do the same task without callbacks
         </textarea>
       </section>
     </section>
@@ -300,32 +504,391 @@
 
           * An abstraction around async work giving us access to “future” values.
           * A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a>
+          </div>
+
+          Notes:
+
+          - An abstraction around async tasks giving us access to future values
+          - A promise represents the eventual completion or failure of an asynchronous operation.
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Promise Terminology
 
-          - https://developers.google.com/web/fundamentals/primers/promises
+          A Promise can be:
+
+          - **Fulfilled**: The action relating to the promise succeeded.
+          - **Rejected**: The action relating to the promise failed.
+          - **Pending**: Hasn't yet fulfilled or rejected.
+          - **Settled**: Has fulfilled or rejected.
+
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developers.google.com/web/fundamentals/primers/promises">
+              https://developers.google.com/web/fundamentals/primers/promises</a>
+          </div>
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Using Promises
+
+          ```js
+          function callback(results, err) {
+            if (err) {
+              console.error('Something went wrong:', error);
+              return;
+            }
+
+            console.log('Got the results:', results)
+          }
+          getUsers(callback);
+          ```
+
+          Notes:
+
+          - An example of an API that uses a callback
+          - getUsers is a function that fetching a list of users from the server.
+          - A task that could take many seconds
+          - Therefore a callback is required.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Using Promises
+
+          ```js
+          const promise = getUsers();
+          promise
+            .then(results => {
+              console.log('Got the results:', results)
+            })
+            .catch(error => {
+              console.error('Something went wrong:', error)
+            })
+          ```
+
+          Notes:
+
+          - If the API call returned a promise, it becomes a lot easier to work with
+          - We call the getUsers function, which returns a Promise.
+          - With this promise, we can call `.then` which allows us to register a handler to execute once it is fulfilled.
+          - Similarly, we can call `.catch` to register a handler to execute on rejection
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### `.then`
+
+          ```js
+          p.then(onFulfilled[, onRejected]);
+          ```
+
+          - Returns a promise
+          - **onFulfilled**: A function called if the promise is fulfilled. It receives the fulfillment value as an argument.
+          - **onRejected**: (optional) A function called if the promise is rejected. It receives the rejection reason as an argument.
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### `.then`
+
+          A handler can:
+
+          - return a value
+          - throw an error
+          - return a promise
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#Return_value">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#Return_value</a>
+          </div>
+
+          Notes:
+
+          A handler can:
+          - return a value: The promise returned by `then` gets resolved with the returned value as it's value.
+          - throw an error: The promise returned by `then` gets rejected with the error as it's value.
+          - return a promise: The promise returned by then gets resolved with that promise's value (or error) as it's value
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### `.catch(`
+
+          ```js
+          p.catch(onRejected);
+          ```
+
+          - The catch() method returns a Promise and deals with rejected cases only
+          - Internally calls `Promise.prototype.then`
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Chaining / Composition
+
+          ```js
+          getUsers()
+            .then(users => getUserProfile(users[0]))
+            .then(userProfile => downloadUserImage(userProfile.image.url))
+            .then(userImage => {
+              console.log('Downloaded user profile image')
+            })
+            .catch(error => {
+              console.error('Something went wrong:', error)
+            })
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Chaining">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Chaining</a>
+          </div>
+
+          Notes:
+
+          - A common need is to execute two or more asynchronous operations back to back, where each subsequent
+          operation starts when the previous operation succeeds, with the result from the previous step.
+          - We accomplish this by creating a promise chain.
+          - We can achieve this because `then` returns a promise, which in turn, can have `.then` called on it.
+
+          - Explain example code
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Chaining / Composition
+
+          ```js
+          doSomething(result => {
+            doSomethingElse(result, newResult => {
+              doThirdThing(newResult, finalResult => {
+                console.log('Got the final result: ' + finalResult);
+              }, handleFailure);
+            }, handleFailure);
+          }, handleFailure);
+          ```
+
+          By chaining promises, we avoid _"callback hell"_
+
+          ```
+          doSomething()
+            .then(result => doSomethingElse(result))
+            .then(newResult => doThirdThing(newResult))
+            .then(finalResult => {
+              console.log('Got the final result: ' + finalResult);
+            })
+            .catch(handleFailure);
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Chaining">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Chaining</a>
+          </div>
+
+          Notes:
+
+          - Explain example of callbacks vs promise based code
+
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Handling Errors
+
+          - A promise chain stops if there's an exception and looks down the chain for a catch handler instead
+
+          ```js
+          doSomething()
+            .then(result => doSomethingElse(result))
+            .then(newResult => doThirdThing(newResult))
+            .then(finalResult => console.log(`Got the final result: ${finalResult}`))
+            .catch(failureCallback);
+          ```
+
+          ```js
+          try {
+            const result = syncDoSomething();
+            const newResult = syncDoSomethingElse(result);
+            const finalResult = syncDoThirdThing(newResult);
+            console.log(`Got the final result: ${finalResult}`);
+          } catch(error) {
+            failureCallback(error);
+          }
+          ```
+
+          Notes:
+
+          - Explain code example
+          - Synchronous version of the asynchronous code represents the logic in try/catch
+
+
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Handling Errors
+
+          - A catch statement can be used to continue the chain after a failure
+
+          ```js
+          fetchUsers()
+            .then(() => {
+                throw new Error('Something failed');
+                console.log('Do this');
+            })
+            .catch(() => {
+                console.log('Do that');
+            })
+            .then(() => {
+                console.log('Do this, no matter what happened before');
+            });
+          ```
+
+          ```
+          Do that
+          Do this, no matter what happened before
+          ```
+
+          Notes:
+
+          - Explain code example
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Creating Promises
-        </textarea>
-      </section>
-      <section data-markdown>
-        <textarea data-template>
-          ### Promise methods
 
-          * `Promise.all`, etc
-          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+          ```js
+          // returns a Promise object that is rejected with the given reason.
+          Promise.reject(new Error('Something went wrong!'));
+          ```
+
+          ```js
+          // returns a Promise object that is resolved with the given value
+          Promise.resolve('I am resolved!');
+          ```
+
+          ```js
+          new Promise((resolve, reject) => {
+            doSomethingAsync((result, err) => {
+              if (err) {
+                reject(err);
+                return;
+              }
+              resolve(result);
+            })
+          })
+          ```
+
+          Notes:
+
+          - Explain the three ways to create Promises
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
-          ### Composition / Chaining of Promises
+          ### Promisify
+
+          Sometimes useful to promisify a callback API to support chaining
+
+          ```js
+          function wait(ms) {
+            return new Promise(resolve => {
+              setTimeout(resolve, ms);
+            });
+          }
+
+          wait(1000)
+            .then(() => {
+              console.log('Waited for 1 second');
+            })
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Creating_a_Promise_around_an_old_callback_API">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Creating_a_Promise_around_an_old_callback_API</a>
+          </div>
+
+          Notes:
+
+          - Explain code example of promisification of setTimeout
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### `Promise.all()`
+
+          - Returns a Promise that resolves when all of the promises have settled
+          - It rejects with the reason of the first promise that rejects.
+
+          ```js
+          const p = Promise.all([
+            doSomething(),
+            doSomethingElse()
+          ]);
+
+          p.then(results => {
+            // results[0] is the result of doSomething()
+            // results[1] is the result of doSomethingElse()
+          })
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all</a>
+          </div>
+
+          Notes:
+
+          - Useful for waiting for a collection of promises to settle before doing something with the results
+          - Rejects if any promise rejects
+          - Explain code example.
+
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### `Promise.race()`
+
+          - Returns a promise that resolves or rejects as soon as one of the promises resolves or rejects.
+          - Resolves or rejects with the value or reason from that promise.
+
+          ```js
+          const p = Promise.race([
+            doSomething(),
+            doSomethingElse()
+          ]);
+
+          p.then(result => {
+            // result is the value of either doSomething or doSomethingElse(),
+            // whichever resolved first.
+          })
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race</a>
+          </div>
+
+          Notes:
+
+          - Similarly, Promise.race returns a promise that resolves or rejects as soon as one of the promises resolves or rejects.
+          - Resolves or rejects with the value or reason from that promise.
+          - Explain code example.
         </textarea>
       </section>
       <section data-markdown>
@@ -333,47 +896,129 @@
           ### When not to use Promises
 
           * If you're doing synchronous work
-          * In place of events that occur numerous times
           * When you have a callback situation where the callback is designed to be called multiple times
-          * For situations where the action often does not finish or occur: This is just inefficient memory usage and is probably better served by some sort of event notification
-          * https://stackoverflow.com/a/37531576
-        </textarea>
-      </section>
-      <section data-markdown>
-        <textarea data-template>
-          ### How Promises work
+          * For situations where the action often does not finish or occur
 
-          * https://github.com/kriskowal/q/blob/v1/design/README.md
-          * https://www.promisejs.org/implementing/
-        </textarea>
-      </section>
-      <section data-markdown>
-        <textarea data-template>
-          ### promisify()
+          https://stackoverflow.com/a/37531576
 
-          * https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original
+          Notes:
+
+          Whilst promises do help tidy up code in many ways, it's also important to recognise when they are not appropriate.
+
+          - If you're doing synchronous work
+          - When you have a callback situation where the callback is designed to be called multiple times
+          - For situations where the action often does not finish or occur:
+          - This is just inefficient memory usage and is probably better served by some sort of event notification
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Promise hell
 
-          * https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513
+          Simple promise chains are best kept flat without nesting, as nesting can be a result of careless composition.
+
+          ```js
+          fetchBook()
+            .then(book => {
+              return formatBook(book)
+                .then(book => {
+                  return sendBookToPrinter(book);
+                });
+            });
+          ```
+
+          ```js
+          fetchBook()
+            .then(book => formatBook(book))
+            .then(book => sendBookToPrinter(book));
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513">
+              https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513</a>
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Nesting">
+              https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Nesting</a>
+          </div>
+
+          Notes:
+
+          - Simple promise chains are best kept flat without nesting, as nesting can be a result of careless composition.
+          - Explain example with nesting vs un-nested
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
-          ### async await
+          ### async-await
+
+          - Syntactic sugar around Promises
+          - Allows you to write async functions more like synchronous functions
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### async-await
+
+          ```js
+          doSomething()
+            .then(result => doSomethingElse(result))
+            .then(newResult => doThirdThing(newResult))
+            .then(finalResult => console.log(`Got the final result: ${finalResult}`))
+            .catch(failureCallback);
+          ```
+
+          ```js
+          try {
+            const result = await doSomething();
+            const newResult = await doSomethingElse(result);
+            const finalResult = await doThirdThing(newResult);
+            console.log(`Got the final result: ${finalResult}`)
+          } catch (e) {
+            failureCallback(e);
+          }
+          ```
+
+          Notes:
+
+          - Explain example how we use async await to make async code appear like synchronous code
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### async-await
+
+          - The await keyword is only valid inside async functions
+
+          ```js
+          async myAsyncFunction() {
+            await doSomething();
+            await doSomethingElse();
+          }
+
+          const p = myAsyncFunction();
+          // typeof p === Promise
+
+          p
+            .then(() => { ... })
+            .catch(() => { ... })
+          ```
+
+          Notes:
+
+          - Important to note that the await keyword is only valid inside async functions
+          - Under the hood async functions return a promise
+          - Explain code example.
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
           ### Cancellation
-        </textarea>
-      </section>
-      <section data-markdown>
-        <textarea data-template>
-          ### Implement our own Promise class
+
+          - You can’t cancel a Promise
+          - This poses potential issues when using promises for long running tasks
+          - There are third party libraries that support cancellation (Bluebird)
+          - If you want cancellation, Promises might not be what you want
         </textarea>
       </section>
     </section>
@@ -385,33 +1030,309 @@
       </section>
       <section data-markdown>
         <textarea data-template>
-          ### XHR (sync)
+          ### Fetching Data / AJAX
 
-          - Demo with browser lockup
+          - Fetch partial data from the server
+          - Update content on a page without refreshing it entirely
+          - Submit user input to the server without POST'ing a form / reloading the page
+
+          Notes:
+
+          - When you're building interactive web applications, often you will need to fetch and render data on demand, in response to a user interaction
+          - By using AJAX, we can fetch partial data from the server without refreshing the page
+          - It's also very useful to be able to submit user inputs like forms to the server without an actual page POST and a subsequent reload of the page
+          - We can achieve this with AJAX techniques
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
-          ### XHR (async)
+          ### Fetching Data / AJAX
+
+          <img class="plain" src="images/ajax-diagram.png" />
+
+          Notes:
+
+          - Here is a diagram of how ajax essentially works.
+          - You have a frontend client who makes AJAX requests to the backend server
+          - And it does this all without reloading the page.
+          - It's done from within the Javascript code executing on the client.
+        </textarea>
+      </section>
+      <section>
+        <h3>XHR (sync)</h3>
+        <pre><code class="js" data-trim>
+          console.log('Loading...');
+
+          const request = new XMLHttpRequest();
+
+          // `false` makes the request synchronous
+          request.open('GET', 'https://api.ipify.org?format=json', false);
+          request.send(null);
+
+          if (request.status === 200) {
+            console.log(request.responseText);
+          }
+        </code></pre>
+        <pre id="xhrSyncDemo__result"></pre>
+        <button id="xhrSyncDemo__runCode">Run Code</button>
+        <script>
+          (() => {
+            const runCodeButton = document.getElementById('xhrSyncDemo__runCode');
+            const resultEl = document.getElementById('xhrSyncDemo__result');
+
+            function run() {
+              resultEl.innerText = '';
+              resultEl.innerText += 'Loading...\n';
+              const request = new XMLHttpRequest();
+
+              // `false` makes the request synchronous
+              request.open('GET', 'https://api.ipify.org?format=json', false);
+              request.send(null);
+
+              if (request.status === 200) {
+                resultEl.innerText += request.responseText;
+              }
+            }
+
+            runCodeButton.addEventListener('click', run);
+          })();
+        </script>
+        <div class="footnotes">
+          <a class="footnote" target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request">
+            https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request</a>
+        </div>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Explain XHR synchronous demo
+            - Explain lock up & why 'Loading...' message is not shown (run to completion)
+            - Why it's bad, how it's related to the event loop
+            - May need to apply network throttling and disable adblocker.
+          </textarea>
+        </aside>
+      </section>
+      <section>
+        <h3>XHR (async)</h3>
+        <pre><code class="js" data-trim>
+          console.log('Loading...');
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://api.ipify.org?format=json", true);
+          xhr.onload = function (e) {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                console.log(xhr.responseText);
+              }
+            }
+          };
+          xhr.send(null);
+        </code></pre>
+        <pre id="xhrAsyncDemo__result"></pre>
+        <button id="xhrAsyncDemo__runCode">Run Code</button>
+        <script>
+          (() => {
+            const runCodeButton = document.getElementById('xhrAsyncDemo__runCode');
+            const resultEl = document.getElementById('xhrAsyncDemo__result');
+
+            function run() {
+              resultEl.innerText = 'Loading...\n';
+              const xhr = new XMLHttpRequest();
+              xhr.open("GET", "https://api.ipify.org?format=json", true);
+              xhr.onload = function (e) {
+                if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                    resultEl.innerText += xhr.responseText;
+                  }
+                }
+              };
+              xhr.send(null);
+            }
+
+            runCodeButton.addEventListener('click', run);
+          })();
+        </script>
+        <div class="footnotes">
+          <a class="footnote" target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Asynchronous_request">
+            https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Asynchronous_request</a>
+        </div>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - Explain XHR asynchronous demo
+            - No lockup in this demo because event loop can continue to execute
+            - Loading message is shown before result
+            - May need to apply network throttling and disable adblocker.
+          </textarea>
+        </aside>
+      </section>
+      <section>
+        <h3>XHR Util with Callback</h3>
+        <pre><code class="js" data-trim style="font-size: 0.6em; line-height: 1.2;">
+          function getData(url, onSuccess, onError) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onload = function(e) {
+              if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                  onSuccess(xhr.responseText);
+                } else {
+                  onError(new Error(xhr.statusText));
+                }
+              }
+            };
+            xhr.onerror = function(e) {
+              onError(new Error(xhr.statusText));
+            }
+            xhr.send(null);
+          };
+        </code></pre>
+        <pre><code class="js" data-trim>
+          getData('https://mysite.com/foo.json', result => {
+            console.log('Got data:', result);
+          }, error => {
+            console.log('An error occurred:', error)
+          })
+        </code></pre>
+
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - XHR boilerplate is quite messy and difficult to work with
+            - Here is a quick little utility that we can use to fetch data from the server
+            - It uses a callback based API however
+          </textarea>
+        </aside>
+      </section>
+      <section>
+        <h3>XHR with Promise</h3>
+        <pre><code class="js" data-trim style="font-size: 0.6em; line-height: 1.2;">
+          function getData(url) {
+            return new Promise((resolve, reject) => {
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', url, true);
+              xhr.onload = function(e) {
+                if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                    resolve(xhr.responseText);
+                  } else {
+                    reject(new Error(xhr.statusText));
+                  }
+                }
+              };
+              xhr.onerror = function(e) {
+                reject(new Error(xhr.statusText));
+              }
+              xhr.send(null);
+            });
+          };
+        </code></pre>
+        <pre><code class="js" data-trim>
+          try {
+            const data = await getData('https://mysite.com/foo.json');
+            console.log('Got data:', result);
+          } catch (error) {
+            console.log('An error occurred:', error)
+          }
+        </code></pre>
+        <aside class="notes" data-markdown>
+          <textarea data-template>
+            - In this utility we use a Promise instead.
+            - We have effectively promisifed the XHR API.
+            - getData is a function that returns a Promise that becomes fulfilled when the XHR is complete
+            - We can interact with it using async/await to make it feel more like synchronous code
+          </textarea>
+        </aside>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### `fetch()`
+
+          - The Fetch API provides an interface for fetching resources
+          - More powerful and flexible feature set than XMLHttpRequest
+
+          <div class="footnotes">
+            <a class="footnote" target="_blank"
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">
+              https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>
+          </div>
+
+          Notes:
+
+          - Whilst those XHR wrappers are useful to keep boilerplate to a minimum, newer evergreen browsers have a builtin API called fetch
+          - It provides an interface for fetching network resources
+          - It's much more powerful and flexible than the existing XMLHttpRequest.
         </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
-          ### whatwg fetch()
+          ### Using `fetch()`
+
+          - Similar to our Promisified `XMLHttpRequest` attempt
+          - Won’t reject on HTTP error status (You will need to compose a chain to reject if you need this)
+          - Call `Response.json()` to deserialize a JSON response
+
+          ```js
+          fetch('http://example.com/movies.json')
+            .then(response => response.json())
+            .then(myJson => {
+              console.log(myJson);
+            });
+          ```
+
+          <div class="footnotes">
+            <a class="footnote" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">
+              https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+            </a>
+          </div>
+
+          Notes:
+
+          - As you can see, the API is very similar to our promisified XHR implementation attempt
+          - But something important to note about fetch is that it won't reject on HTTP error status
+          - If you want a rejection on these, you will need to compose a chain to reject under these circumstances
+          - If you are dealing with JSON data, you will need to call response.json() to deserialize the JSON payload
+          - response.json() returns a promise, so you will generally need to work in a promise chain
+          - Explain example with promise chain
         </textarea>
       </section>
     </section>
     <section>
       <section data-markdown>
         <textarea data-template>
-          ## Single Page Applications
+          ## Single Page Applications (SPA's)
         </textarea>
       </section>
-    </section>
-    <section>
       <section data-markdown>
         <textarea data-template>
-          ## Web Workers
+          ### Single Page Applications (SPA's)
+
+          - A website that re-renders its content in response to user actions (i.e. clicking a link) without reloading the entire page
+          - Will make use of `XHR`/`fetch` to load partial content on user actions
+          - Easy to build with the right tools (Angular, React + React-Router, Vue)
+          - Feels more responsive to users
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### SPA Pros
+
+          - Feels more responsive to users - low latency to switch between "pages"
+          - Explicit split between "frontend" and "backend" architecture"
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### SPA Cons
+
+          - Difficult to optimize for search engines
+          - Often quite large to load initially. Bundles > 1MB
+          - Memory leaks are more likely
+          - Routing and Navigation is difficult to get right
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### SPA Examples
+
+          - Gmail
         </textarea>
       </section>
     </section>
@@ -419,6 +1340,77 @@
       <section data-markdown>
         <textarea data-template>
           ## Frameworks
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### jQuery (2006 &rarr; present)
+
+          - One of the first web "frameworks"
+          - Designed to simplify client side scripting
+          - Most widely adopted JS library (still plaguing sites today)
+          - jQuery's syntax is designed to make it easier to navigate a document
+
+          <div class="footnotes">
+            <a target="_blank" class="footnote" href="https://en.wikipedia.org/wiki/JQuery">
+              https://en.wikipedia.org/wiki/JQuery
+            </a>
+          </div>
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Backbone (2010 &rarr; 2016)
+
+          - Known for being lightweight as it only had a single dependency
+          - Designed for developing single page applications
+          - Assisted in keeping various parts of web applications synchronised.
+
+          <div class="footnotes">
+            <a target="_blank" class="footnote" href="https://en.wikipedia.org/wiki/Backbone.js">
+              https://en.wikipedia.org/wiki/Backbone.js
+            </a>
+          </div>
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Angular/AngularJS (2010 &rarr; present)
+
+          - Provides a framework for client-side MVC application architectures
+          - "Magical" DOM data binding
+          - Angular 2+ versions are simply called Angular. Angular is an incompatible rewrite of AngularJS
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### React (2013 &rarr; present)
+
+          - React does not attempt to provide a complete 'application framework'
+          - Similar to Vue, it is designed specifically for building user interfaces
+          - Complex React applications require the use of libraries for state management, routing, etc.
+
+          <div class="footnotes">
+            <a target="_blank" class="footnote" href="https://en.wikipedia.org/wiki/React_(JavaScript_library)">
+              https://en.wikipedia.org/wiki/React_(JavaScript_library)
+            </a>
+          </div>
+        </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+          ### Vue (2014 &rarr; present)
+
+          - Built to organize and simplify web development.
+          - Less opinionated that other frameworks (angular) thus easier for developers to pick up.
+          - Features an incrementally adoptable architecture.
+          - Advanced features required for complex applications such as routing, state management and build tooling are offered via officially maintained supporting libraries and packages.
+
+          <div class="footnotes">
+            <a target="_blank" class="footnote" href="https://en.wikipedia.org/wiki/Vue.js">
+              https://en.wikipedia.org/wiki/Vue.js
+            </a>
+          </div>
         </textarea>
       </section>
     </section>
